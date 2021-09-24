@@ -1,6 +1,6 @@
 ---
 name: The Breach Studios
-place: Barcelona
+place: Remote
 start: Sep/2021
 end: Present
 duration: Counting
