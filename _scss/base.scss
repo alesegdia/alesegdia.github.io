@@ -1,0 +1,115 @@
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+    font-family: $text-font;
+	font-size: 1em;
+	line-height: 1.5;
+}
+
+.badge {
+	display: inline-block;
+	border-radius: 8px;
+	padding-left: 8px;
+	padding-right: 8px;
+	color: white;
+	font-weight: bold;
+	font-family: helvetica;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.badge-red {
+	background-color: #d9534f;
+}
+
+.badge-gray {
+	background-color: #777;
+}
+
+.badge-green {
+	background-color: #5cb85c;
+}
+
+.badge-blue {
+	background-color: #337ab7;
+}
+
+.badge-yellow {
+	background-color: #f0ad4e;
+}
+
+.badge-fucsia {
+	background-color: #f0f;
+}
+
+.badge-orange {
+	background-color: #5bc0de;
+}
+
+.general-container {
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 32px;
+	float: center;
+	text-align: left;
+}
+
+
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 2px solid #DDD;
+	margin: 0em 0;
+	padding: 0;
+	width: 100%;
+}
+
+a:link, a:visited {
+
+	color: #268bd2;
+	text-decoration: none;
+
+}
+
+a:link:hover, a:visited:hover {
+
+	text-decoration: underline;
+
+}
+
+
+
+
+.flex-container {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+.tag-container {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-end;
+}
+
+.tag-container2 {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-begin;
+	margin-left: 30px;
+}
+
+.bgimg {
+	width: 100%;
+	height: 100px;
+	display: block;
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	overflow:hidden;
+	text-indent:100%;
+	white-space:nowrap;
+}
+

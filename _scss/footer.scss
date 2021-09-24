@@ -1,0 +1,39 @@
+
+.footer {
+	margin-top: 20px;
+	background-color: #000;
+	font-style: italic;
+	box-shadow: 0 0 10px;
+
+	&-container {
+		text-align: center;
+		padding-top: 16px;
+	}
+
+	&-links-panel {
+		margin-top: 0px;
+		i {
+			font-size: 32pt;
+		}
+	}
+
+	&-text {
+		color: #FFF;
+		font-size: 12pt;
+		font-family: $title-font;
+	}
+
+	img {
+	}
+
+	&-links-panel {
+		text-align: center;
+	}
+
+	&-fill {
+		height: 100%;
+		position: absolute;
+		background-color: black;
+	}
+
+}

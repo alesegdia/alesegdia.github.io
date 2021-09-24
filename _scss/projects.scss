@@ -1,0 +1,76 @@
+
+/* PROJECTS CONFIG ******************************/
+.project-category {
+	line-height: 0px;
+}
+
+.projects-for-category {
+	margin-left: 20px;
+}
+
+.project {
+
+	&-section {
+		h1 {
+		}
+	}
+
+	margin-bottom: 24px;
+
+	h2, h3, h4 {
+		margin: 0;
+	}
+
+	&-section-explanation {
+
+		margin-bottom: 32px;
+
+	}
+
+	&-denomination {
+		display: inline-block;
+		width: 100%;
+	}
+
+	&-name {
+		display: inline-block;
+		float: left;
+	}
+
+	&-stuff {
+		display: inline-block;
+		float: right;
+		text-align: right;
+	}
+
+	&-description {
+		display: block;
+
+		p {
+			margin: 0px;
+		}
+	}
+
+	&-techs {
+
+		color: gray;
+		text-transform: uppercase;
+		font-size: 14px;
+
+		ul {
+			margin: 0px;
+		}
+
+		ul li:first-child {
+			list-style: none;
+		}
+
+		ul li {
+			float: left;
+			margin-left: 28px;
+		}
+
+
+	}
+
+}

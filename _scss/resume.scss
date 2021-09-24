@@ -1,0 +1,106 @@
+/* RESUME CONFIG *********************************/
+
+h1, h2, h3, h4 {
+	font-family: $title-font;
+}
+
+.circled-image {
+	$imsize: 42px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    width: $imsize;
+    height: $imsize;
+	filter: grayscale(60%);
+	background-size: $imsize $imsize;
+	display:inline-block;
+}
+
+.resume {
+
+	&-container {
+		h2 {
+			line-height: 0px;
+		}
+	}
+
+	&-section {
+		margin-bottom: 52px;
+	}
+
+	&-denomination {
+		text-align: center;
+		margin-bottom: 48px;
+
+		&-name {
+			h1 {
+				margin-top: 0px;
+				margin-bottom: 0px;
+			}
+		}
+
+		&-ocupation {
+			color: gray;
+		}
+
+	}
+
+	&-education {
+
+		&-entry {
+			margin-bottom: 12px;
+			&-title {
+				font-weight: bold;
+			}
+
+			&-location {
+				color: #999;
+			}
+		}
+		
+	}
+
+	&-experience {
+		
+		h3 {
+			line-height: 0em;
+		}
+		
+		h2 {
+
+		}
+
+		&-entry {
+			&-title {
+				display: inline-block;
+				width: 100%;
+				&-name {
+					display: inline-block;
+					float: left;
+				}
+				&-date {
+					display: inline-block;
+					float: right;
+				}
+			}
+
+			&-workplace {
+				color: #999;
+			}
+
+			&-description {
+				display: block;
+				ul {
+					margin-top: 0px;
+				}
+			}
+		}
+	}
+
+	&-profile {
+		&-description {
+		}
+	}
+
+}
+

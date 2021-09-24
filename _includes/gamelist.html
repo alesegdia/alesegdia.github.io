@@ -1,0 +1,29 @@
+<div class="flex-container">
+{% assign games = (site.games | sort: "order") %}
+{% for game in games reversed %}
+  {% if game.type == include.gametag %}
+    <div class="game-entry">
+        {% if game.image %}
+        <a href="{{game.exturl}}" target="_blank" class="bgimg" style="background-image: url('{{site.baseurl}}/assets/{{game.image}}')">hiddenlink</a>
+        {% else %}
+        <a href="{{game.exturl}}" class="bgimg" style="background-image: url('{{site.baseurl}}/assets/placeholder.png')">hiddenlink</a>
+        {% endif %}
+        <!--<div class="game-entry-jam"><center><a>{{ game.jamname }}</a></center></div> -->
+        <div><a {% if game.exturl %} href="{{game.exturl}}" {% endif %} class="game-entry-title">{{ game.title }}</a></div>
+
+        <div class="game-entry-tags">
+          <a>
+            {% for tag in game.tags %}
+              {% assign var = game.tags | last %}
+              {% if tag != var %}
+                {{ tag }}
+              {% else %}
+                {{ tag }}
+              {% endif %}
+            {%endfor%}
+          </a>
+        </div>
+    </div>
+  {% endif %}
+{% endfor %}
+</div>

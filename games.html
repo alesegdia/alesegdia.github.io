@@ -1,0 +1,90 @@
+---
+layout: base
+permalink: /games/
+title: games
+---
+
+
+<div class="general-container">
+<div class="flex-container">
+
+{% assign games = (site.games | sort: "order") %}
+{% for game in games reversed %}
+<div class="game-entry">
+	<div class="game-entry-image">
+	{% if game.jamname %}
+		<div class="game-entry-type-tag tag-blue"><a>{{ game.jamname }}</a>
+	{% elsif game.type == 'prototype' %}
+		<div class="game-entry-type-tag tag-red"><a>{{ game.denomination | default: "prototype" }}</a>
+	{% elsif game.type == 'complete' %}
+		<div class="game-entry-type-tag tag-green"><a>{{ game.denomination | default: "finished" }}</a>
+	{% endif %}
+
+			<div class="game-entry-tags">
+					{% for tag in game.tags %}
+					{{ tag }} {% if forloop.last == false %}•{% endif %}
+					{%endfor%}
+			</div>
+		</div>
+
+
+	{% if game.image %}
+		<a href="{{game.exturl}}" target="_blank" class="bgimg" style="background-image: url('{{site.baseurl}}/assets/{{game.image}}')">hiddenlink</a>
+	{% else %}
+		<a href="{{game.exturl}}" class="bgimg" style="background-image: url('{{site.baseurl}}/assets/placeholder.png')">hiddenlink</a>
+	{% endif %}
+	</div>
+
+	<div class="game-entry-denomination">
+		<!--<div class="game-entry-jam"><center><a>{{ game.jamname }}</a></center></div> -->
+		<div class="game-entry-name">
+			<h1><a {% if game.exturl %} href="{{game.exturl}}" {% endif %} class="game-entry-title">{{ game.title }}</a></h1>
+		</div>
+
+		<div class="game-entry-links">
+
+			{% if game.link_web %}
+				<a target="_blank" href="{{ game.link_web }}"><i class="fa fa-html5"></i></a>
+			{% endif %}
+
+			{% if game.link_windows %}
+				<a target="_blank" href="{{ game.link_windows }}"><i class="fa fa-windows"></i></a>
+			{% endif %}
+
+			{% if game.link_linux %}
+				<a target="_blank" href="{{ game.link_linux }}"><i class="fa fa-linux"></i></a>
+			{% endif %}
+
+			{% if game.link_mac %}
+				<a target="_blank" href="{{ game.link_mac }}"><i class="fa fa-apple"></i></a>
+			{% endif %}
+
+			{% if game.link_android %}
+				<a target="_blank" href="{{ game.link_android }}"><i class="fa fa-android"></i></a>
+			{% endif %}
+
+			{% if game.link_github %}
+				<a target="_blank" href="{{ game.link_github }}"><i class="fa fa-github-alt"></i></a>
+			{% endif %}
+
+			{% if game.link_home %}
+				<a target="_blank" href="{{ game.link_home }}"><i class="fa fa-globe"></i></a>
+			{% endif %}
+
+			{% if game.link_youtube %}
+				<a target="_blank" href="{{ game.link_youtube }}"><i class="fa fa-youtube-play"></i></a>
+			{% endif %}
+
+		</div>
+
+	</div>
+
+	<div class="game-entry-description">
+		{{ game.content }}
+	</div>
+
+</div>
+{% endfor %}
+
+</div>
+</div>

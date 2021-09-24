@@ -1,0 +1,24 @@
+---
+layout: base
+---
+<br />
+
+<div class="custom-blog-entry">
+	<h1  href="{{ post.url | prepend: site.baseurl }}">
+		{{ page.title }}
+	</h1>
+	<div class="custom-post-excerpt-date">
+		Written at 
+		<a>{{ page.date | date_to_long_string }}</a> — tagged as
+		{% for tag in page.categories %}
+			{% if forloop.last == false %}
+				{{ tag }}, 
+			{% else %}
+				{{ tag }}
+			{% endif %}
+		{% endfor %}
+	</div>
+	<div class="custom-post-excerpt-content custom-links-1">
+			{{ content }}
+	</div>
+</div>

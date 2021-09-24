@@ -1,0 +1,74 @@
+
+.menu-title {
+	font-size: 30pt;
+	font-family: $title-font;
+	font-style: italic;
+	color: white;
+	padding: 10px;
+	display: inline-block;
+	padding-bottom: 0px;
+}
+
+.menu-ext-link {
+	display: inline-block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 4px;
+	padding-right: 4px;
+	font-size: 14pt;
+	a {
+		color: white;
+	}
+}
+
+.links-panel {
+	display: inline-block;
+	float:right;
+	position: absolute;
+	right: 0px;
+	margin-right: 12px;
+}
+
+.total-panel {
+	display: inline-block;
+}
+
+.top-menu {
+
+	text-align: center;
+	background-color: black;
+	color: #AAAAAA;
+	border-bottom: solid 2px #268bd2;
+
+	&-item {
+
+		font-size: 14pt;
+		background-color: #232323;
+		text-transform: uppercase;
+		font-size: .875rem; 
+
+		a {
+			padding-left: 4px;
+			padding-right: 4px;
+		}
+
+		&:hover {
+			background-color: pink;
+		}
+
+		a {
+
+			&:link, &:visited {
+				color: #CCC;
+				background-color: #000;
+
+			}
+
+			&:hover {
+				color: white;
+			}
+
+		}
+	}
+
+}

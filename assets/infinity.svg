@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100"
+   height="50"
+   viewBox="1 1 3 3"
+   x="0px"
+   y="0px"
+   id="svg3394"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="infinity.svg"
+   fill="#FFFFFF">
+  <metadata
+     id="metadata3406">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3404" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1918"
+     inkscape:window-height="1059"
+     id="namedview3402"
+     showgrid="false"
+     inkscape:zoom="4.7658997"
+     inkscape:cx="76.285819"
+     inkscape:cy="9.1354695"
+     inkscape:window-x="0"
+     inkscape:window-y="19"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3394" />
+  <title
+     id="title3396">Infinity symbol</title>
+  <g
+     data-name="Layer 1"
+     id="g3398">
+    <path
+       d="M2.09216,2.67871c.05832-.0296.11695-.06016.17537-.092l.09449.04644c-.14838.08637-.29638.17363-.44668.25524-.07263.03944-.01758.16034.0546.1402a2.92061,2.92061,0,0,0,.63094-.27923,4.52233,4.52233,0,0,0,.52592.2173A.97293.97293,0,0,0,4.27091,2.773c.10006-.13887.21956-.39309.0881-.55213a.67158.67158,0,0,0-.53494-.16175,2.25785,2.25785,0,0,0-.96219.29844c-.072.036-.14314.07394-.21389.11286l-.10153-.04962A2.46,2.46,0,0,0,2.97187,2.076c.01821-.01882-.00674-.05458-.027-.03827a1.59835,1.59835,0,0,1-.26831.15936q-.14416.07609-.291.14661c-.10854-.05116-.21756-.101-.32757-.14787C1.67693,2.03333.52715,1.5851.58512,2.476.63983,3.31676,1.706,2.87458,2.09216,2.67871Zm1.45932-.402a.85679.85679,0,0,1,.69229.01308c.10333.07028.01482.2272-.04152.29707a.54541.54541,0,0,1-.24741.16965,1.48829,1.48829,0,0,1-1.07026-.16916A3.33758,3.33758,0,0,1,3.55148,2.27676Zm-2.73738.12a.17289.17289,0,0,1,.14275-.18623.82391.82391,0,0,1,.39377.01994,3.50019,3.50019,0,0,1,.71387.25869,2.825,2.825,0,0,1-.80229.23179.5562.5562,0,0,1-.34186-.0496A.29513.29513,0,0,1,.81409,2.39681Z"
+       id="path3400" />
+  </g>
+</svg>

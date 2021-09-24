@@ -1,0 +1,80 @@
+
+/* BLOG CONFIG **********************************/
+.custom-blog-entry {
+	width: 800px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (max-width: 900px) {
+	.custom-blog-entry {
+		width: 500px;
+	}
+	.post-list {
+		max-width: 500px;
+	}
+}
+
+@media (max-width: 512px) {
+	.custom-blog-entry {
+		width: 250px;
+	}
+	.post-list {
+		max-width: 250px;
+	}
+}
+
+.custom-post-excerpt-entry {
+
+}
+
+.custom-post-excerpt-date {
+	float: right;
+	display: inline;
+	color: #777;
+	font-family: $text-font;
+	font-size: 11pt;
+}
+
+.custom-post-excerpt-tags {
+	float: right;
+	display: inline;
+	color: #777;
+	font-family: $text-font;
+	font-size: 11pt;
+	top: 0px;
+}
+
+.custom-post-excerpt-title {
+	vertical-align: bottom;
+	font-family: $text-font;
+	padding: 0;
+	top: 0;
+	line-height: 1.3em;
+	font-size: 1.125rem;
+}
+
+.custom-post-excerpt-excerpt {
+	width: 80%;
+	display: block;
+	font-size: .875rem;
+}
+
+.custom-post-excerpt-title:hover,
+.custom-post-excerpt-title:visited:hover {
+	color: #333;
+	text-decoration: none;
+}
+
+.custom-post-excerpt-title:visited,
+.custom-post-excerpt-title:link {
+	color: #333;
+	text-decoration: none;
+}
+
+.custom-post-excerpt-content {
+	top: 0em;
+	position: relative;
+}
+

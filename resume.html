@@ -1,0 +1,49 @@
+---
+layout: base
+permalink: /resume/
+title: resume
+---
+
+<div class="general-container resume-container">
+	<div class="resume-denomination">
+		<div class="resume-denomination-name">
+			<h1>Alejandro Seguí Díaz</h1>
+		</div>
+		<div class="resume-denomination-ocupation">Senior Computer Engineer specialized in Computer Science</div>
+	</div>
+
+
+	<div class="resume-section resume-education">
+		<h2>EDUCATION</h2>
+		<div class="resume-education-entry">
+			<a class="resume-education-entry-title">University Degree at Computer Engineering specialized in Computer Science</a></a><br/>
+			<a class="resume-education-entry-location">University of Huelva</a>
+		</div>
+		<div class="resume-education-entry">
+			<div class="resume-education-entry-title">B1 English Certificate</div>
+			<div class="resume-education-entry-location">Escuela Oficial de Idiomas</div>
+		</div>
+	</div>
+
+	<div class="resume-section resume-experience">
+		<h2 class="about-title">WORK EXPERIENCES</h2>
+		{% for workplace in site.workplaces reversed %}
+		<div class="resume-experience-entry">
+			<div class="resume-experience-entry-title">
+				<div class="resume-experience-entry-title-name">
+					<h3>{{ workplace.position }}</h3>
+					<h4 class="resume-experience-entry-workplace" style="line-height: .4em;">{{ workplace.name }}, {{ workplace.place }}</h4>
+				</div>
+				<div class="resume-experience-entry-title-date">
+					<div>{{ workplace.start }} - {{ workplace.end }}</div>
+				</div>
+			</div>
+
+			<div class=resume-experience-entry-description>
+				{{ workplace }}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+</div>

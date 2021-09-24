@@ -1,0 +1,26 @@
+---
+layout: base
+permalink: /blog/
+title: blog
+---
+<div class="general-container blog-section">
+	<h1>Blog</h1>
+	{% for post in site.posts %}
+		<div class="custom-post-excerpt-entry">
+			<div>
+				<a class="custom-post-excerpt-title" href="{{ post.url | prepend: site.baseurl }}">
+					{{ post.title }}
+				</a>
+				<span class="custom-post-excerpt-date">
+					<a>{{ post.date | date_to_long_string }}</a>
+				</span>
+			</div>
+			<div>
+				<span class="custom-post-excerpt-excerpt">
+					{{ post.excerpt }}
+				</span>
+			</div>
+		</div>
+		<hr/>
+	{% endfor %}
+</div>

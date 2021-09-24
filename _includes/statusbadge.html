@@ -1,0 +1,17 @@
+
+{% case include.badge %}
+{% when 'ai' %}
+	<div class="badge badge-red"> 
+{% when 'game' %}
+	<div class="badge badge-blue">
+{% when 'lib' %}
+	<div class="badge badge-green">
+{% when 'editor' %}
+	<div class="badge badge-yellow">
+{% when 'cg' %}
+	<div class="badge badge-orange">
+{% else %}
+	<div class="badge badge-fucsia">
+{% endcase %}
+	{{ include.badge }}
+</div>
