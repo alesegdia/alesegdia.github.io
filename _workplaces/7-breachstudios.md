@@ -1,5 +1,5 @@
 ---
-name: Outfit7
+name: The Breach Studios
 place: Barcelona
 start: Sep/2021
 end: Present
