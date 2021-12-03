@@ -1,6 +1,6 @@
 ---
 layout: base
-permalink: /games/
+permalink: /
 title: games
 ---
 
@@ -8,7 +8,7 @@ title: games
 <div class="general-container">
 <div class="flex-container">
 
-{% assign games = (site.games | sort: "order") %}
+{% assign games = site.games | sort: "order" %}
 {% for game in games reversed %}
 <div class="game-entry">
 	<div class="game-entry-image">

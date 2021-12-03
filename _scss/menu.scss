@@ -42,10 +42,9 @@
 
 	&-item {
 
-		font-size: 14pt;
 		background-color: #232323;
 		text-transform: uppercase;
-		font-size: .875rem; 
+		font-size: 15pt;
 
 		a {
 			padding-left: 4px;
@@ -66,6 +65,9 @@
 
 			&:hover {
 				color: white;
+				text-decoration: none;
+						font-weight: bold;
+
 			}
 
 		}
