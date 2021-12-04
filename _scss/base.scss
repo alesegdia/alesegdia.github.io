@@ -115,14 +115,15 @@ a:link:hover, a:visited:hover {
 }
 
 .bgimg {
-	width: 100%;
+	width: $gameblocksheight;
 	height: $gameblocksheight;
 	display: block;
-	background-size: 100%;
+	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	overflow:hidden;
 	text-indent:100%;
 	white-space:nowrap;
+	background-clip: border-box;
 }
 
