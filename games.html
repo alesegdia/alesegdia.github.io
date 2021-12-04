@@ -31,7 +31,7 @@ title: games
 <div class="pure-g">
 {% assign games = site.games | sort: "order" %}
 {% for game in games reversed %}
-<div class="game-entry pure-u-1-6 filter-visible {% for taggedas in game.taggedas %} filter-tagged-as-{{ taggedas }}{% endfor %}">
+<div class="game-entry pure-u-xl-1-6 pure-u-lg-1-5 pure-u-md-1-4 pure-u-sm-1-3 filter-visible {% for taggedas in game.taggedas %} filter-tagged-as-{{ taggedas }}{% endfor %}">
 <div class="game-entry-elem">
 	<div class="game-entry-image">
 	
