@@ -14,6 +14,7 @@ link_windows: https://github.com/alesegdia/LD33/releases/download/jam0.1/sefivm-
 link_linux: https://github.com/alesegdia/LD33/releases/download/jam0.1/sefivm-desktop.zip
 link_mac: https://github.com/alesegdia/LD33/releases/download/jam0.1/sefivm-desktop.zip
 link_github: https://github.com/alesegdia/LD33
+taggedas: [rpg, java, jam]
 ---
 
 Sefivm features battles with a pokemon-like system of weakness and strengths and generated

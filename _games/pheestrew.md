@@ -8,6 +8,7 @@ link_home: http://ludumdare.com/compo/ludum-dare-35/?action=preview&uid=44038
 type: jam
 order: 30
 link_github: https://github.com/alesegdia/ld35
+taggedas: [rpg, cpp]
 ---
 
 Pheestrew is a mix of rogelike and classic JRPG where you are a random hick called Pheestrew

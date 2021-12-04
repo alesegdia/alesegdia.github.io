@@ -12,6 +12,7 @@ link_linux: https://gamejolt.com/games/dash-maker/203150/download/build/391767
 link_home: http://gamejolt.com/games/dash-maker/203150
 type: jam
 order: -1
+taggedas: [runner, joke, cpp]
 ---
 
 Game where you have to go all the way through a plain track by pressing two keys without crashing in the

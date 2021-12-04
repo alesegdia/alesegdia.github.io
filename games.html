@@ -8,10 +8,35 @@ title: games
 <div class="general-container">
 <div class="flex-container">
 
+<a class="filter-tag-name-jam filter-selected">jam</a>&nbsp;
+<a class="filter-tag-name-platformer filter-selected">platformer</a>&nbsp;
+<a class="filter-tag-name-rpg filter-selected">rpg</a>&nbsp;
+<a class="filter-tag-name-puzzle filter-selected">puzzle</a>&nbsp;
+<a class="filter-tag-name-strategy filter-selected">strategy</a>&nbsp;
+<a class="filter-tag-name-clicker filter-selected">clicker</a>&nbsp;
+<a class="filter-tag-name-arcade filter-selected">arcade</a>&nbsp;
+<a class="filter-tag-name-shmup filter-selected">shmup</a>&nbsp;
+<a class="filter-tag-name-metroidvania filter-selected">metroidvania</a>&nbsp;
+<a class="filter-tag-name-procedural filter-selected">procedural</a>&nbsp;
+<a class="filter-tag-name-procedural filter-selected">racing</a>&nbsp;
+
+<a class="filter-tag-name-cpp filter-selected">cpp</a>&nbsp;
+<a class="filter-tag-name-java filter-selected">java</a>&nbsp;
+<a class="filter-tag-name-js filter-selected">js</a>&nbsp;
+<a class="filter-tag-name-ruby filter-selected">ruby</a>&nbsp;
+<a class="filter-tag-name-gosu filter-selected">lua</a>&nbsp;
+<a class="filter-tag-name-gosu filter-selected">unity</a>&nbsp;
+<a class="filter-tag-name-gosu filter-onehour">onehour</a>&nbsp;
+
+<div class="pure-g">
 {% assign games = site.games | sort: "order" %}
 {% for game in games reversed %}
-<div class="game-entry">
+<div class="game-entry pure-u-1-6 filter-visible {% for taggedas in game.taggedas %} filter-tagged-as-{{ taggedas }}{% endfor %}">
+<div class="game-entry-elem">
 	<div class="game-entry-image">
+	
+	
+<!--
 	{% if game.jamname %}
 		<div class="game-entry-type-tag tag-blue"><a>{{ game.jamname }}</a>
 	{% elsif game.type == 'prototype' %}
@@ -26,7 +51,7 @@ title: games
 					{%endfor%}
 			</div>
 		</div>
-
+-->
 
 	{% if game.image %}
 		<a href="{{game.exturl}}" target="_blank" class="bgimg" style="background-image: url('{{site.baseurl}}/assets/{{game.image}}')">hiddenlink</a>
@@ -35,8 +60,8 @@ title: games
 	{% endif %}
 	</div>
 
+<!--
 	<div class="game-entry-denomination">
-		<!--<div class="game-entry-jam"><center><a>{{ game.jamname }}</a></center></div> -->
 		<div class="game-entry-name">
 			<h1><a {% if game.exturl %} href="{{game.exturl}}" {% endif %} class="game-entry-title">{{ game.title }}</a></h1>
 		</div>
@@ -80,11 +105,13 @@ title: games
 	</div>
 
 	<div class="game-entry-description">
-		{{ game.content }}
+		{{ game.content }} 
 	</div>
-
+-->
+</div>
 </div>
 {% endfor %}
+</div>
 
 </div>
 </div>

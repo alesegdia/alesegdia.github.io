@@ -8,6 +8,7 @@ tags:
 exturl: http://gamejolt.com/games/picando-hasta-el-amanecer/55456
 link_home: http://gamejolt.com/games/picando-hasta-el-amanecer/55456
 type: jam
+taggedas: [hidden]
 ---
 
 

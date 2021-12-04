@@ -76,11 +76,11 @@
 			}
 		}
 
-		display: block;
-		width: 100%;
-		margin: 10px;
-		margin-top: 20px;
-
+		&-elem {
+			margin-top: 20px;
+			padding: 1em;
+		}
+		
 		&-tags {
 			font-size: 12px;
 			text-transform: uppercase;
