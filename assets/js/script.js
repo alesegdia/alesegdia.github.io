@@ -5,6 +5,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	var tags = document.querySelectorAll('[class*="filter-tag-name-"]');
 	console.log('Found tag elements:', tags.length);
 	
+	// Get all type filter elements
+	var typeFilters = document.querySelectorAll('.type-filter');
+	console.log('Found type filter elements:', typeFilters.length);
+	
 	if (tags.length === 0) {
 		console.log('No tag elements found! Checking available elements...');
 		var allAs = document.querySelectorAll('a');
@@ -18,6 +22,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		var selectedTagsList = document.getElementById('selected-tags-list');
 		var selectedTags = [];
 		var selectedTagElements = [];
+		var selectedTypes = [];
+		var selectedTypeElements = [];
 		
 		// Get all selected tags and hide them from main area
 		var allTagElements = document.querySelectorAll('[class*="filter-tag-name-"]');
@@ -34,11 +40,26 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			}
 		});
 		
-		if (selectedTags.length > 0) {
+		// Get all selected type filters
+		var allTypeElements = document.querySelectorAll('.type-filter');
+		allTypeElements.forEach(typeElement => {
+			if (typeElement.classList.contains("filter-selected")) {
+				var typeName = typeElement.textContent.trim();
+				selectedTypes.push(typeName);
+				selectedTypeElements.push(typeElement);
+			}
+		});
+		
+		var totalSelected = selectedTags.length + selectedTypes.length;
+		var totalSelected = selectedTags.length + selectedTypes.length;
+		
+		if (totalSelected > 0) {
 			selectedTagsContainer.style.display = 'block';
 			
-			// Create clickable tags in selected area with original styling
+			// Create clickable tags and types in selected area with original styling
 			selectedTagsList.innerHTML = '';
+			
+			// Add selected tags
 			selectedTags.forEach((tagName, index) => {
 				var originalElement = selectedTagElements[index];
 				var tagSpan = document.createElement('span');
@@ -84,12 +105,60 @@ window.addEventListener('DOMContentLoaded', (event) => {
 				
 				selectedTagsList.appendChild(tagSpan);
 			});
+			
+			// Add selected types
+			selectedTypes.forEach((typeName, index) => {
+				var originalElement = selectedTypeElements[index];
+				var typeSpan = document.createElement('span');
+				typeSpan.textContent = typeName;
+				
+				// Copy color classes from original
+				var colorClass = '';
+				if (originalElement.classList.contains('tag-orange')) colorClass = 'tag-orange';
+				else if (originalElement.classList.contains('tag-blue')) colorClass = 'tag-blue';
+				else if (originalElement.classList.contains('tag-green')) colorClass = 'tag-green';
+				else if (originalElement.classList.contains('tag-gray')) colorClass = 'tag-gray';
+				
+				typeSpan.className = colorClass;
+				typeSpan.style.cssText = `
+					display: inline-block;
+					cursor: pointer;
+					margin: 0.2rem;
+					padding: 0.3rem 0.6rem;
+					border-radius: 6px;
+					font-size: 0.8rem;
+					font-weight: 600;
+					transition: all 0.2s ease;
+					border: 2px solid #333;
+				`;
+				
+				typeSpan.title = 'Click to remove this type filter';
+				
+				// Add hover effect
+				typeSpan.addEventListener('mouseenter', function() {
+					typeSpan.style.opacity = '0.7';
+					typeSpan.style.transform = 'scale(0.95)';
+				});
+				typeSpan.addEventListener('mouseleave', function() {
+					typeSpan.style.opacity = '1';
+					typeSpan.style.transform = 'scale(1)';
+				});
+				
+				// Add click handler to remove the type filter
+				typeSpan.addEventListener('click', function() {
+					selectedTypeElements[index].classList.remove('filter-selected');
+					filterGames();
+					updateSelectedTagsDisplay();
+				});
+				
+				selectedTagsList.appendChild(typeSpan);
+			});
 		} else {
 			selectedTagsContainer.style.display = 'none';
 		}
 	}
 	
-	// Function to filter games based on selected tags
+	// Function to filter games based on selected tags and types
 	function filterGames() {
 		// Get all selected tags
 		var selectedTags = [];
@@ -107,24 +176,54 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			}
 		});
 		
-		console.log('Selected tags:', selectedTags);
+		// Get all selected types
+		var selectedTypes = [];
+		var allTypeElements = document.querySelectorAll('.type-filter');
 		
-		// Show/hide games based on selected tags
+		allTypeElements.forEach(typeElement => {
+			if (typeElement.classList.contains("filter-selected")) {
+				// Extract type name from class
+				for(let value of typeElement.classList.values()) {
+					var match = value.match(/^filter-type-(.*)$/);
+					if(match != null) {
+						selectedTypes.push(match[1]);
+					}
+				}
+			}
+		});
+		
+		console.log('Selected tags:', selectedTags);
+		console.log('Selected types:', selectedTypes);
+		
+		// Show/hide games based on selected tags and types
 		var allGameElements = document.querySelectorAll(".game-card");
 		console.log('Found game elements:', allGameElements.length);
 		
 		allGameElements.forEach(gameElement => {
-			if (selectedTags.length === 0) {
-				// If no tags selected, show all games
+			if (selectedTags.length === 0 && selectedTypes.length === 0) {
+				// If no filters selected, show all games
 				gameElement.classList.remove("filter-hidden");
 				gameElement.classList.add("filter-visible");
 			} else {
-				// Check if game has any of the selected tags
-				var hasSelectedTag = selectedTags.some(tag => 
-					gameElement.classList.contains("filter-tagged-as-" + tag)
-				);
+				var hasSelectedTag = true;
+				var hasSelectedType = true;
 				
-				if (hasSelectedTag) {
+				// Check tag filtering
+				if (selectedTags.length > 0) {
+					hasSelectedTag = selectedTags.some(tag => 
+						gameElement.classList.contains("filter-tagged-as-" + tag)
+					);
+				}
+				
+				// Check type filtering
+				if (selectedTypes.length > 0) {
+					hasSelectedType = selectedTypes.some(type => 
+						gameElement.classList.contains("filter-type-" + type)
+					);
+				}
+				
+				// Show game only if it matches both tag and type filters (AND logic)
+				if (hasSelectedTag && hasSelectedType) {
 					gameElement.classList.remove("filter-hidden");
 					gameElement.classList.add("filter-visible");
 				} else {
@@ -140,6 +239,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		var allTagElements = document.querySelectorAll('[class*="filter-tag-name-"]');
 		allTagElements.forEach(tagElement => {
 			tagElement.classList.remove('filter-selected');
+		});
+		
+		var allTypeElements = document.querySelectorAll('.type-filter');
+		allTypeElements.forEach(typeElement => {
+			typeElement.classList.remove('filter-selected');
 		});
 		
 		filterGames();
@@ -159,6 +263,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		element.addEventListener('click', function(e) {
 			e.preventDefault();
 			console.log('Tag clicked:', element.className, element.textContent);
+			
+			element.classList.toggle("filter-selected");
+			console.log('Classes after toggle:', element.className);
+			
+			// Filter games and update display
+			filterGames();
+			updateSelectedTagsDisplay();
+		});
+	});
+	
+	// Set up type filter click handlers
+	typeFilters.forEach(element => {
+		console.log('Setting up type filter click handler for:', element.className, element.textContent);
+		element.style.cursor = 'pointer';
+		
+		element.addEventListener('click', function(e) {
+			e.preventDefault();
+			console.log('Type filter clicked:', element.className, element.textContent);
 			
 			element.classList.toggle("filter-selected");
 			console.log('Classes after toggle:', element.className);

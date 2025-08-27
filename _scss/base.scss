@@ -13,6 +13,12 @@ body {
     font-family: $text-font;
 }
 
+// Make bold elements green
+strong, b, .bold {
+    color: #00AA00 !important;
+    font-weight: bold;
+}
+
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
     font-family: $text-font;

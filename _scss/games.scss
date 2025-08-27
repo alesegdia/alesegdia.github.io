@@ -1,5 +1,27 @@
 /* GAME CARD LAYOUT ******************************/
 
+.filters-container {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 3px outset #c0c0c0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
+  
+  h4 {
+    color: #495057;
+    text-shadow: 1px 1px 0px #ffffff;
+    font-family: 'Comic Sans MS', cursive;
+  }
+  
+  // Enhanced selection state for tags within filters container
+  a[class*="filter-tag-name-"].filter-selected {
+    border: 2px inset #c0c0c0 !important;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transform: translateY(1px);
+  }
+}
+
 .game-grid {
   display: flex;
   flex-direction: column;
@@ -16,6 +38,12 @@
   margin-bottom: 1rem;
   
   /* 90s style effects */
+  
+  // Make bold elements green within game cards
+  strong, b, .bold {
+    color: #00AA00 !important;
+    font-weight: bold;
+  }
 }
 
 .game-header {
@@ -26,7 +54,7 @@
   h3 {
     margin: 0 0 0.5rem 0;
     font-size: 1.4rem;
-    color: #000080;
+    color: #000000;  // Changed to black
     font-family: 'Comic Sans MS', cursive;
     text-shadow: 2px 2px 0px #ffffff;
     font-weight: bold;
@@ -78,18 +106,23 @@
 // Game header backgrounds based on game type
 .game-card {
   &.game-type-jam .game-header {
-    background: linear-gradient(135deg, rgba(255, 152, 0, 0.3) 0%, rgba(255, 152, 0, 0.1) 100%);
-    border-bottom: 3px groove rgba(255, 152, 0, 0.5);
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.6) 0%, rgba(255, 152, 0, 0.3) 100%);
+    border-bottom: 3px groove rgba(255, 152, 0, 0.8);
   }
   
   &.game-type-prototype .game-header {
-    background: linear-gradient(135deg, rgba(33, 150, 243, 0.3) 0%, rgba(33, 150, 243, 0.1) 100%);
-    border-bottom: 3px groove rgba(33, 150, 243, 0.5);
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.6) 0%, rgba(33, 150, 243, 0.3) 100%);
+    border-bottom: 3px groove rgba(33, 150, 243, 0.8);
   }
   
   &.game-type-complete .game-header {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.3) 0%, rgba(76, 175, 80, 0.1) 100%);
-    border-bottom: 3px groove rgba(76, 175, 80, 0.5);
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.6) 0%, rgba(76, 175, 80, 0.3) 100%);
+    border-bottom: 3px groove rgba(76, 175, 80, 0.8);
+  }
+  
+  &.game-type-unknown .game-header {
+    background: linear-gradient(135deg, rgba(158, 158, 158, 0.6) 0%, rgba(158, 158, 158, 0.3) 100%);
+    border-bottom: 3px groove rgba(158, 158, 158, 0.8);
   }
   
   &.game-type-unknown .game-header {
@@ -131,7 +164,7 @@
         padding: 0.4rem 0.8rem;
         border-radius: 0;
         background: #c0c0c0;
-        color: #000080;
+        color: #000000;  // Changed to black
         border: 2px outset #c0c0c0;
         transition: none;
         font-weight: bold;
@@ -176,7 +209,7 @@
     }
     
     .game-description {
-      color: #666;
+      color: #000000;  // Changed to black
       line-height: 1.6;
       font-size: 0.95rem;
       
@@ -194,7 +227,7 @@
     }
     
     .game-jam {
-      color: #AAA;
+      color: #000000;  // Changed to black
       font-size: 0.9rem;
       font-family: monospace;
       margin-top: 1rem;
@@ -245,6 +278,70 @@
       display: block;
       margin: 0.3rem 0;
       text-align: center;
+    }
+  }
+}
+
+/* TYPE FILTER STYLES ******************************/
+
+.type-filter {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  &.filter-selected {
+    border-color: #333;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+  }
+  
+  &.tag-orange {
+    background-color: #ff9800;
+    color: white;
+    
+    &:hover {
+      background-color: #e68900;
+    }
+  }
+  
+  &.tag-blue {
+    background-color: #2196f3;
+    color: white;
+    
+    &:hover {
+      background-color: #1976d2;
+    }
+  }
+  
+  &.tag-green {
+    background-color: #4caf50;
+    color: white;
+    
+    &:hover {
+      background-color: #388e3c;
+    }
+  }
+  
+  &.tag-gray {
+    background-color: #9e9e9e;
+    color: white;
+    
+    &:hover {
+      background-color: #757575;
     }
   }
 }
