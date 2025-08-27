@@ -1,76 +1,156 @@
 
 /* PROJECTS CONFIG ******************************/
-.project-category {
-	line-height: 0px;
-}
 
-.projects-for-category {
-	margin-left: 20px;
+.project-section {
+	h1 {
+		color: #000080;
+		font-family: 'Comic Sans MS', cursive;
+		text-shadow: 2px 2px 0px #ffffff;
+		font-weight: bold;
+		margin-bottom: 2rem;
+		text-align: center;
+		font-size: 2rem;
+	}
 }
 
 .project {
-
-	&-section {
-		h1 {
-		}
-	}
-
-	margin-bottom: 24px;
+	background: #f0f0f0;
+	border-radius: 0;
+	box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+	border: 3px outset #c0c0c0;
+	overflow: hidden;
+	margin-bottom: 2rem;
+	padding: 1.5rem;
 
 	h2, h3, h4 {
 		margin: 0;
+		color: #000080;
+		font-family: 'Comic Sans MS', cursive;
+		text-shadow: 1px 1px 0px #ffffff;
 	}
 
-	&-section-explanation {
+	h2 {
+		font-size: 1.4rem;
+		font-weight: bold;
+		
+		a {
+			color: #000080;
+			text-decoration: none;
+			
+			&:hover {
+				color: #0000ff;
+				text-decoration: underline;
+			}
+		}
+	}
 
-		margin-bottom: 32px;
-
+	h4 {
+		font-size: 1rem;
+		color: #666;
+		margin-top: 0.25rem;
 	}
 
 	&-denomination {
-		display: inline-block;
-		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 1rem;
+		flex-wrap: wrap;
+		gap: 1rem;
 	}
 
 	&-name {
-		display: inline-block;
-		float: left;
+		flex: 1;
+		min-width: 0;
 	}
 
 	&-stuff {
-		display: inline-block;
-		float: right;
+		flex-shrink: 0;
 		text-align: right;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		align-items: flex-end;
+	}
+
+	&-status {
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		justify-content: flex-end;
 	}
 
 	&-description {
-		display: block;
+		margin-top: 1rem;
+		line-height: 1.6;
+		color: #333;
 
 		p {
-			margin: 0px;
+			margin: 0 0 1rem 0;
+			
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		
+		// Make bold elements green within project descriptions
+		strong, b, .bold {
+			color: #00AA00 !important;
+			font-weight: bold;
 		}
 	}
 
 	&-techs {
-
-		color: gray;
+		color: #666;
 		text-transform: uppercase;
-		font-size: 14px;
+		font-size: 0.8rem;
+		font-weight: bold;
 
-		ul {
-			margin: 0px;
-		}
-
-		ul li:first-child {
+		&-list {
+			margin: 0;
+			padding: 0;
 			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+
+			li {
+				background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
+				border: 2px outset #c0c0c0;
+				border-radius: 0;
+				padding: 0.25rem 0.5rem;
+				font-size: 0.7rem;
+				color: #000080;
+				text-shadow: 1px 1px 0px #ffffff;
+				font-weight: bold;
+			}
 		}
-
-		ul li {
-			float: left;
-			margin-left: 28px;
-		}
-
-
 	}
 
+	hr {
+		display: none; // Hide the HR since we have card-like styling now
+	}
+}
+
+/* Responsive design for projects */
+@media (max-width: 768px) {
+	.project {
+		&-denomination {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		&-stuff {
+			align-items: flex-start;
+			text-align: left;
+		}
+
+		&-status {
+			justify-content: flex-start;
+		}
+
+		&-techs-list {
+			justify-content: flex-start;
+		}
+	}
 }

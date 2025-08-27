@@ -154,34 +154,45 @@ a[class*="filter-tag-name-"]:hover {
 	font-family: helvetica;
 	font-size: 12px;
 	text-transform: uppercase;
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+	border: 2px outset #c0c0c0;
 }
 
 .badge-red {
 	background-color: #d9534f;
+	border-color: #c9302c;
 }
 
 .badge-gray {
 	background-color: #777;
+	border-color: #666;
 }
 
 .badge-green {
 	background-color: #5cb85c;
+	border-color: #4cae4c;
 }
 
 .badge-blue {
 	background-color: #337ab7;
+	border-color: #2e6da4;
 }
 
 .badge-yellow {
 	background-color: #f0ad4e;
+	border-color: #eea236;
+	color: #333;
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
 }
 
 .badge-fucsia {
 	background-color: #f0f;
+	border-color: #d0d;
 }
 
 .badge-orange {
-	background-color: #5bc0de;
+	background-color: #ff9500;
+	border-color: #e0860a;
 }
 
 .general-container {
