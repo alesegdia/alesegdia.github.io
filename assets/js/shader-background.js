@@ -128,33 +128,39 @@ class ShaderBackground {
             void main() {
                 vec2 uv = gl_FragCoord.xy / u_resolution.xy;
                 
-                // Retro background
-                vec3 color = vec3(0.1, 0.1, 0.2);
+                // Center the coordinates
+                uv = uv - 0.5;
                 
-                // Finer grid pattern with more cells
-                vec2 grid = abs(fract(uv * 30.0) - 0.5);
-                float line = smoothstep(0.0, 0.03, grid.x) * smoothstep(0.0, 0.03, grid.y);
-                color += vec3(0.1, 0.3, 0.5) * (1.0 - line);
+                // Adjust for aspect ratio
+                uv.x *= u_resolution.x / u_resolution.y;
                 
-                // More animated circles (smaller lights)
-                for(int i = 0; i < 12; i++) {
-                    float fi = float(i);
-                    
-                    // More varied movement patterns
-                    float x = 0.5 + 0.4 * sin(u_time * (0.3 + fi * 0.1) + fi * 0.8);
-                    float y = 0.5 + 0.4 * cos(u_time * (0.2 + fi * 0.05) + fi * 1.2);
-                    vec2 center = vec2(x, y);
-                    
-                    // Smaller radius for more lights
-                    float radius = 0.02 + 0.015 * sin(u_time * 3.0 + fi * 1.5);
-                    float c = circle(uv, center, radius);
-                    
-                    // More color variety
-                    float hue = mod(fi * 0.2 + u_time * 0.15, 1.0);
-                    vec3 circleColor = hsv2rgb(vec3(hue, 0.9, 1.0));
-                    
-                    color = mix(color, circleColor, c * 0.8);
-                }
+                // Rotate the camera (increased rotation)
+                float angle = 0.6;  // Increased rotation angle (about 34 degrees)
+                float cosAngle = cos(angle);
+                float sinAngle = sin(angle);
+                
+                // Apply rotation matrix
+                vec2 rotatedUv = vec2(
+                    uv.x * cosAngle - uv.y * sinAngle,
+                    uv.x * sinAngle + uv.y * cosAngle
+                );
+                
+                // Moving thick band patterns (Earthbound style) - slower animation
+                float time = u_time * 0.1;  // Much slower animation
+                
+                // Create thick horizontal bands without perspective
+                float bandSpacing = 4.0;  // Much thicker bands (reduced from 8.0)
+                float bandY = rotatedUv.y * bandSpacing + time * 1.5;
+                
+                // Use floor to create solid bands
+                float bandIndex = floor(bandY);
+                
+                // Alternating colors: yellow and blue bands
+                bool isYellow = mod(bandIndex, 2.0) < 1.0;
+                
+                vec3 yellowColor = vec3(1.0, 0.9, 0.0);    // Bright yellow
+                vec3 blueColor = vec3(0.0, 0.3, 1.0);      // Deep blue
+                vec3 color = isYellow ? yellowColor : blueColor;
                 
                 gl_FragColor = vec4(color, 1.0);
             }
