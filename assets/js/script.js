@@ -1,6 +1,45 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 	console.log('DOM loaded, setting up tag filters...');
 	
+	// Initialize taskbar clock
+	function updateTaskbarClock() {
+		const now = new Date();
+		const timeElement = document.getElementById('taskbar-time');
+		const dateElement = document.getElementById('taskbar-date');
+		
+		if (timeElement && dateElement) {
+			const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+			const dateString = now.toLocaleDateString([], {month: 'short', day: 'numeric'});
+			
+			timeElement.textContent = timeString;
+			dateElement.textContent = dateString;
+		}
+	}
+	
+	// Update clock immediately and then every minute
+	updateTaskbarClock();
+	setInterval(updateTaskbarClock, 60000);
+	
+	// Set active taskbar item based on current page
+	function setActiveTaskbarItem() {
+		const currentPath = window.location.pathname;
+		const taskbarItems = document.querySelectorAll('.taskbar-item');
+		
+		// Remove active class from all items
+		taskbarItems.forEach(item => item.classList.remove('active'));
+		
+		// Set active based on current path
+		if (currentPath === '/' || currentPath.includes('/games')) {
+			taskbarItems[0]?.classList.add('active'); // Games
+		} else if (currentPath.includes('/tools')) {
+			taskbarItems[1]?.classList.add('active'); // Tools
+		}
+		// GitHub and Resume are external links, so they won't be active
+	}
+	
+	// Set active item on page load
+	setActiveTaskbarItem();
+	
 	// Get all tag elements 
 	var tags = document.querySelectorAll('[class*="filter-tag-name-"]');
 	console.log('Found tag elements:', tags.length);

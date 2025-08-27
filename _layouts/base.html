@@ -10,6 +10,45 @@
 			{{ content }}
 		</div>
 
+		<!-- Windows-style taskbar -->
+		<div class="windows-taskbar">
+			<div class="taskbar-start">
+				<button class="start-button">
+					<div class="start-icon-circle" style="background-image: url('{{site.baseurl}}/assets/melogo.png')"></div>
+					<span class="start-text">Start</span>
+				</button>
+			</div>
+			<div class="taskbar-middle">
+				<div class="taskbar-items">
+					<div class="taskbar-item active" onclick="window.location.href='{{site.url}}/'">
+						<span class="taskbar-icon">🎮</span>
+						<span class="taskbar-label">Games Portfolio</span>
+					</div>
+					<div class="taskbar-item" onclick="window.location.href='{{site.url}}/tools'">
+						<span class="taskbar-icon">🔧</span>
+						<span class="taskbar-label">Tools</span>
+					</div>
+					<div class="taskbar-item" onclick="window.open('https://github.com/alesegdia', '_blank')">
+						<span class="taskbar-icon">💻</span>
+						<span class="taskbar-label">GitHub</span>
+					</div>
+					<div class="taskbar-item" onclick="window.open('https://www.linkedin.com/in/alesegdia/', '_blank')">
+						<span class="taskbar-icon">📄</span>
+						<span class="taskbar-label">Resume</span>
+					</div>
+				</div>
+			</div>
+			<div class="taskbar-end">
+				<div class="system-tray">
+					<span class="tray-icon">🔊</span>
+					<span class="tray-icon">📶</span>
+					<div class="clock">
+						<span id="taskbar-time"></span>
+						<span id="taskbar-date"></span>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</body>
 
