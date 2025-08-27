@@ -1,10 +1,7 @@
 ---
 title: Razor X
 jamname: "Godot Game Jam"
-tags:
-  - racing
-  - speed
-  - godot engine
+tags: [racing, speed, godot engine, jam]
 image: razorx-thumbnail.png
 exturl: https://choreetsogames.itch.io/razorx
 link_home: https://choreetsogames.itch.io/razorx
@@ -13,7 +10,6 @@ link_windows: https://choreetsogames.itch.io/razorx
 link_github: https://github.com/alesegdia/godot-jam-june-2016
 type: jam
 order: 1
-taggedas: [racing, jam]
 ---
 
 Game made with godot to test the engine. The game consists in going through high speed and

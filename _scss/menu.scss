@@ -3,7 +3,8 @@
 	font-size: 30pt;
 	font-family: $title-font;
 	font-style: italic;
-	color: white;
+	color: #ff00ff;
+	text-shadow: 3px 3px 0px #000080, 6px 6px 0px #ffff00;
 	padding: 10px;
 	display: inline-block;
 	padding-bottom: 0px;
@@ -34,17 +35,18 @@
 }
 
 .top-menu {
-
 	text-align: center;
-	background-color: black;
-	color: #AAAAAA;
-	border-bottom: solid 2px #268bd2;
+	background: linear-gradient(45deg, #008080 0%, #0000ff 50%, #800080 100%);
+	color: #ffff00;
+	border-bottom: 5px ridge #c0c0c0;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 
 	&-item {
-
-		background-color: #232323;
+		background: linear-gradient(135deg, #c0c0c0 0%, #808080 100%);
 		text-transform: uppercase;
 		font-size: 15pt;
+		border: 2px outset #c0c0c0;
+		margin: 2px;
 
 		a {
 			padding-left: 4px;

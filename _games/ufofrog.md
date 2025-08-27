@@ -1,17 +1,12 @@
 ---
 title: Ufofrog
-tags:
-  - arcade
-  - minigame
-  - story
-  - lua/love2d
+tags: [arcade, minigame, story, lua, love2d]
 image: ufofrog-thumb.png
 exturl: https://github.com/alesegdia/ufofrog/releases
 link_github: https://github.com/alesegdia/ufofrog
 link_windows: https://github.com/alesegdia/ufofrog/releases/download/0.3/ufofrog.win.zip
 type: complete
 order: 0
-taggedas: [love2d, lua]
 ---
 
 Featuring a story of an alien frog regular cycle of life through two adrenaline-full short games.

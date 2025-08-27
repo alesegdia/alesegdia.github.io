@@ -1,10 +1,7 @@
 ---
 title: Terroba Run
 jamname: "Ludum Dare #32"
-tags:
-  - shmup
-  - humor
-  - haxe/luxe
+tags: [shooter, humor, haxe, luxe]
 image: terroba-thumb.png
 exturl: http://ludumdare.com/compo/ludum-dare-32/?action=preview&uid=44038
 type: jam

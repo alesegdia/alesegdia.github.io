@@ -1,9 +1,6 @@
 ---
 title: Miniray
-tags:
-  - fps
-  - rpg
-  - c++/opengl
+tags: [fps, rpg, cpp, opengl]
 image: miniray-thumb.png
 exturl: https://github.com/alesegdia/miniray
 link_github: https://github.com/alesegdia/miniray

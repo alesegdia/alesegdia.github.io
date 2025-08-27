@@ -1,7 +1,7 @@
 ---
 title: Asroth
 jamname: "GBJam #4"
-tags: [platformer, shooter, roguelike, java/libgdx]
+tags: [platformer, shooter, roguelike, java, libgdx, metroidvania]
 image: asroth-thumb.png
 exturl: http://gamejolt.com/games/asroth/86768
 link_home: http://gamejolt.com/games/asroth/86768
@@ -12,7 +12,6 @@ link_linux: https://gamejolt.com/games/asroth/86768/download/build/237911
 link_mac: https://gamejolt.com/games/asroth/86768/download/build/237911
 link_github: https://github.com/alesegdia/gbjam-asroth
 link_site: https://gamejolt.com/games/asroth/86768
-taggedas: [platformer, java, libgdx, roguelike, metroidvania]
 ---
 
 Asroth is the result of a week of work in a procedurally

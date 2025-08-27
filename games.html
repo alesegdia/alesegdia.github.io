@@ -5,110 +5,146 @@ title: games
 ---
 
 
-<div class="general-container">
+<div <div class="game-grid">
+{% for game in games reversed %}
+<div class="game-card game-type-{{ game.type | default: 'unknown' }} filter-visible {% for tag in game.tags %} filter-tagged-as-{{ tag | downcase | replace: ' ', '-' | replace: '/', '' }}{% endfor %}">ss="general-container">
 <div class="flex-container">
 
-<a class="filter-tag-name-jam filter-selected">jam</a>&nbsp;
-<a class="filter-tag-name-platformer filter-selected">platformer</a>&nbsp;
-<a class="filter-tag-name-rpg filter-selected">rpg</a>&nbsp;
-<a class="filter-tag-name-puzzle filter-selected">puzzle</a>&nbsp;
-<a class="filter-tag-name-strategy filter-selected">strategy</a>&nbsp;
-<a class="filter-tag-name-clicker filter-selected">clicker</a>&nbsp;
-<a class="filter-tag-name-arcade filter-selected">arcade</a>&nbsp;
-<a class="filter-tag-name-shmup filter-selected">shmup</a>&nbsp;
-<a class="filter-tag-name-metroidvania filter-selected">metroidvania</a>&nbsp;
-<a class="filter-tag-name-procedural filter-selected">procedural</a>&nbsp;
-<a class="filter-tag-name-procedural filter-selected">racing</a>&nbsp;
-
-<a class="filter-tag-name-cpp filter-selected">cpp</a>&nbsp;
-<a class="filter-tag-name-java filter-selected">java</a>&nbsp;
-<a class="filter-tag-name-js filter-selected">js</a>&nbsp;
-<a class="filter-tag-name-ruby filter-selected">ruby</a>&nbsp;
-<a class="filter-tag-name-gosu filter-selected">lua</a>&nbsp;
-<a class="filter-tag-name-gosu filter-selected">unity</a>&nbsp;
-<a class="filter-tag-name-gosu filter-onehour">onehour</a>&nbsp;
-
-<div class="pure-g">
 {% assign games = site.games | sort: "order" %}
-{% for game in games reversed %}
-<div class="game-entry pure-u-xl-1-6 pure-u-lg-1-5 pure-u-md-1-4 pure-u-sm-1-3 filter-visible {% for taggedas in game.taggedas %} filter-tagged-as-{{ taggedas }}{% endfor %}">
-<div class="game-entry-elem">
-	<div class="game-entry-image">
-	
-	
-<!--
-	{% if game.jamname %}
-		<div class="game-entry-type-tag tag-blue"><a>{{ game.jamname }}</a>
-	{% elsif game.type == 'prototype' %}
-		<div class="game-entry-type-tag tag-red"><a>{{ game.denomination | default: "prototype" }}</a>
-	{% elsif game.type == 'complete' %}
-		<div class="game-entry-type-tag tag-green"><a>{{ game.denomination | default: "finished" }}</a>
-	{% endif %}
+{% assign all_tags = "" | split: "" %}
+{% assign tag_counts = "" | split: "" %}
+{% for game in games %}
+  {% if game.tags %}
+    {% assign all_tags = all_tags | concat: game.tags %}
+  {% endif %}
+{% endfor %}
+{% assign all_tags = all_tags | uniq | sort %}
 
-			<div class="game-entry-tags">
-					{% for tag in game.tags %}
-					{{ tag }} {% if forloop.last == false %}•{% endif %}
-					{%endfor%}
+<!-- Calculate tag frequencies -->
+{% assign tag_frequency = "" | split: "" %}
+{% for tag in all_tags %}
+  {% assign count = 0 %}
+  {% for game in games %}
+    {% if game.tags contains tag %}
+      {% assign count = count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% assign tag_with_count = tag | append: ":" | append: count %}
+  {% assign tag_frequency = tag_frequency | push: tag_with_count %}
+{% endfor %}
+
+{% for tag_data in tag_frequency %}
+  {% assign tag_parts = tag_data | split: ":" %}
+  {% assign tag = tag_parts[0] %}
+  {% assign count = tag_parts[1] | plus: 0 %}
+  {% assign size_class = "tag-size-low" %}
+  {% if count >= 4 %}
+    {% assign size_class = "tag-size-high" %}
+  {% elsif count >= 2 and count <= 3 %}
+    {% assign size_class = "tag-size-mid" %}
+  {% endif %}
+<a class="filter-tag-name-{{ tag | downcase | replace: ' ', '-' | replace: '/', '' }} {{ size_class }}">{{ tag }}</a>&nbsp;
+{% endfor %}
+
+</div>
+
+<!-- Selected Tags Section -->
+<div id="selected-tags-section" style="margin: 2rem 0;">
+  <div id="selected-tags-container" style="padding: 1rem; background: #e7f3ff; border-radius: 8px; border: 2px solid #007bff; display: none;">
+    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <button id="clear-filters" style="padding: 0.3rem 0.6rem; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 500; transition: background-color 0.2s ease; display: flex; align-items: center; gap: 0.3rem;" title="Clear all filters">✕</button>
+        <strong style="color: #0056b3;">Active Filters:</strong>
+      </div>
+      <div id="selected-tags-list" style="display: flex; flex-wrap: wrap; gap: 0.2rem;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="game-grid">
+{% for game in games reversed %}
+<div class="game-card filter-visible {% for tag in game.tags %} filter-tagged-as-{{ tag | downcase | replace: ' ', '-' | replace: '/', '' }}{% endfor %}">
+	<div class="game-card-content">
+		
+		<!-- Game Header -->
+		<div class="game-header">
+			<h3>{{ game.title }}</h3>
+			
+			<!-- Game Status Badges -->
+			<div class="game-status-badges">
+				{% if game.type == 'jam' %}
+					<span class="badge tag-orange">Game Jam</span>
+					{% if game.jamname %}
+						<span class="badge tag-light">{{ game.jamname }}</span>
+					{% endif %}
+				{% elsif game.type == 'prototype' %}
+					<span class="badge tag-blue">Prototype</span>
+				{% elsif game.type == 'complete' %}
+					<span class="badge tag-green">Complete</span>
+				{% else %}
+					<span class="badge tag-gray">{{ game.type | default: "Game" | capitalize }}</span>
+				{% endif %}
 			</div>
 		</div>
--->
-
-	{% if game.image %}
-		<a href="{{game.exturl}}" target="_blank" class="bgimg" style="background-image: url('{{site.baseurl}}/assets/{{game.image}}')">hiddenlink</a>
-	{% else %}
-		<a href="{{game.exturl}}" class="bgimg" style="background-image: url('{{site.baseurl}}/assets/placeholder.png')">hiddenlink</a>
-	{% endif %}
-	</div>
-
-<!--
-	<div class="game-entry-denomination">
-		<div class="game-entry-name">
-			<h1><a {% if game.exturl %} href="{{game.exturl}}" {% endif %} class="game-entry-title">{{ game.title }}</a></h1>
+		
+		<!-- Game Content -->
+		<div class="game-content">
+			<!-- Game Image -->
+			<div class="game-image">
+				{% if game.image %}
+					<img src="{{site.baseurl}}/assets/{{game.image}}" alt="{{ game.title }}" />
+				{% else %}
+					<img src="{{site.baseurl}}/assets/placeholder.png" alt="{{ game.title }}" />
+				{% endif %}
+			</div>
+			
+			<!-- Game Info -->
+			<div class="game-info">
+				<!-- Game Description -->
+				<div class="game-description">
+					{{ game.content }}
+				</div>
+				
+				<!-- Game Tags -->
+				<div class="game-tags">
+					{% for tag in game.tags %}
+						<span class="tag">{{ tag }}</span>
+					{% endfor %}
+				</div>
+				
+				<!-- Game Links -->
+				<div class="game-links">
+					{% if game.exturl %}
+						<a href="{{ game.exturl }}" target="_blank" title="View Game Page" class="primary-link">🌐 View Game</a>
+					{% endif %}
+					{% if game.link_web %}
+						<a href="{{ game.link_web }}" target="_blank" title="Play Online">� Play</a>
+					{% endif %}
+					{% if game.link_windows %}
+						<a href="{{ game.link_windows }}" target="_blank" title="Download for Windows">🪟 Windows</a>
+					{% endif %}
+					{% if game.link_linux %}
+						<a href="{{ game.link_linux }}" target="_blank" title="Download for Linux">🐧 Linux</a>
+					{% endif %}
+					{% if game.link_mac %}
+						<a href="{{ game.link_mac }}" target="_blank" title="Download for Mac">🍎 Mac</a>
+					{% endif %}
+					{% if game.link_android %}
+						<a href="{{ game.link_android }}" target="_blank" title="Download for Android">🤖 Android</a>
+					{% endif %}
+					{% if game.link_github %}
+						<a href="{{ game.link_github }}" target="_blank" title="View Source Code">💻 Source</a>
+					{% endif %}
+					{% if game.link_home %}
+						<a href="{{ game.link_home }}" target="_blank" title="Game Page">🏠 Home</a>
+					{% endif %}
+					{% if game.link_youtube %}
+						<a href="{{ game.link_youtube }}" target="_blank" title="Watch Video">📹 Video</a>
+					{% endif %}
+				</div>
+			</div>
 		</div>
-
-		<div class="game-entry-links">
-
-			{% if game.link_web %}
-				<a target="_blank" href="{{ game.link_web }}"><i class="fa fa-html5"></i></a>
-			{% endif %}
-
-			{% if game.link_windows %}
-				<a target="_blank" href="{{ game.link_windows }}"><i class="fa fa-windows"></i></a>
-			{% endif %}
-
-			{% if game.link_linux %}
-				<a target="_blank" href="{{ game.link_linux }}"><i class="fa fa-linux"></i></a>
-			{% endif %}
-
-			{% if game.link_mac %}
-				<a target="_blank" href="{{ game.link_mac }}"><i class="fa fa-apple"></i></a>
-			{% endif %}
-
-			{% if game.link_android %}
-				<a target="_blank" href="{{ game.link_android }}"><i class="fa fa-android"></i></a>
-			{% endif %}
-
-			{% if game.link_github %}
-				<a target="_blank" href="{{ game.link_github }}"><i class="fa fa-github-alt"></i></a>
-			{% endif %}
-
-			{% if game.link_home %}
-				<a target="_blank" href="{{ game.link_home }}"><i class="fa fa-globe"></i></a>
-			{% endif %}
-
-			{% if game.link_youtube %}
-				<a target="_blank" href="{{ game.link_youtube }}"><i class="fa fa-youtube-play"></i></a>
-			{% endif %}
-
-		</div>
-
 	</div>
-
-	<div class="game-entry-description">
-		{{ game.content }} 
-	</div>
--->
-</div>
 </div>
 {% endfor %}
 </div>

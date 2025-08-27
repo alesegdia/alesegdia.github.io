@@ -1,10 +1,7 @@
 ---
 title: The Vaker
 jamname: "LowRezJam 2016"
-tags:
-  - humor
-  - 1hour
-
+tags: [humor, minigame]
 image: vakerthumb.png
 exturl: http://gamejolt.com/games/the-vaker/138705
 link_home: http://gamejolt.com/games/the-vaker/138705

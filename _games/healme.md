@@ -1,9 +1,7 @@
 ---
 title: Heal Me!
 jamname: "TINS2017"
-tags:
-  - simple
-  - reaction
+tags: [minigame, reaction]
 image: healme.png
 exturl: https://github.com/alesegdia/tins2017
 link_github: https://github.com/alesegdia/tins2017

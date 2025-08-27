@@ -1,7 +1,6 @@
 ---
 title: Throwing Throwies
-tags:
-  - annoying
+tags: [annoying]
 image: throwies.png
 exturl: https://throwingthrowies.herokuapp.com/index.html
 link_web: https://throwingthrowies.herokuapp.com/index.html

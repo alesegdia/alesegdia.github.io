@@ -1,7 +1,7 @@
 ---
 title: Blondmare
 jamname: "Ludum Dare #31"
-tags: [runner,shooter,unity3d]
+tags: [runner, shooter, unity, jam]
 image: blondmare-thumb.png
 exturl: http://ludumdare.com/compo/ludum-dare-31/?action=preview&uid=44038
 link_home: http://ludumdare.com/compo/ludum-dare-31/?action=preview&uid=44038
@@ -10,7 +10,6 @@ link_windows: http://www.mediafire.com/download/68h1afpy91xv6k8/LD31_blondmare_w
 link_linux: http://www.mediafire.com/download/5ww77cqodfvabox/LD31_blondmare_linux.rar
 type: jam
 order: 1
-taggedas: [shooter, unity, shmup, shootemup, runner, unity3d]
 ---
 
 Here you are a girl in front of her nightmares who has to shoot her way through them

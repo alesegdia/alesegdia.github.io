@@ -1,16 +1,12 @@
 ---
 title: Ragman
-tags:
-  - ai
-  - framework
-  - ruby/gosu
+tags: [ai, framework, ruby, gosu, arcade, pacman]
 image: ragman-thumb.png
 exturl: https://github.com/alesegdia/ragman
 link_github: https://github.com/alesegdia/ragman
 type: prototype
 order: 0
 denomination: usable framework prototype
-taggedas: [arcade, ruby, gosu, pacman]
 ---
 
 Ragman is just some kind of incomplete pacman clone made to test some AI techniques. The idea was to have a
