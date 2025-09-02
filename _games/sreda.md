@@ -4,7 +4,6 @@ jamname: "Familiar Game Jam #5"
 tags: [arcade, strategy, lua, love2d]
 image: sreda-thumb.png
 exturl: http://gamejolt.com/games/sreda-vniecaps/104049
-link_home: http://gamejolt.com/games/sreda-vniecaps/104049
 type: jam
 order: 6
 link_windows: https://gamejolt.com/games/sreda-vniecaps/104049/download/build/263474

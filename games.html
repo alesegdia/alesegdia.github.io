@@ -128,7 +128,31 @@ title: games
 			<!-- Game Image -->
 			<div class="game-image">
 				{% if game.image %}
-					<img src="{{site.baseurl}}/assets/{{game.image}}" alt="{{ game.title }}" />
+					{% if game.image.size and game.image.size > 1 %}
+						<!-- Slideshow for multiple images -->
+						<div class="slideshow-container" data-game="{{ game.title | slugify }}">
+							{% for image in game.image %}
+								<div class="slide {% if forloop.first %}active{% endif %}">
+									<img src="{{site.baseurl}}/assets/{{image}}" alt="{{ game.title }} - Image {{ forloop.index }}" />
+								</div>
+							{% endfor %}
+							<!-- Navigation arrows -->
+							<button class="slide-prev" onclick="changeSlide('{{ game.title | slugify }}', -1)">‹</button>
+							<button class="slide-next" onclick="changeSlide('{{ game.title | slugify }}', 1)">›</button>
+							<!-- Dots indicator -->
+							<div class="slide-dots">
+								{% for image in game.image %}
+									<span class="dot {% if forloop.first %}active{% endif %}" onclick="currentSlide('{{ game.title | slugify }}', {{ forloop.index }})"></span>
+								{% endfor %}
+							</div>
+						</div>
+					{% elsif game.image.size and game.image.size == 1 %}
+						<!-- Single image from array -->
+						<img src="{{site.baseurl}}/assets/{{game.image.first}}" alt="{{ game.title }}" />
+					{% else %}
+						<!-- Single image as string -->
+						<img src="{{site.baseurl}}/assets/{{game.image}}" alt="{{ game.title }}" />
+					{% endif %}
 				{% else %}
 					<img src="{{site.baseurl}}/assets/placeholder.png" alt="{{ game.title }}" />
 				{% endif %}
@@ -187,5 +211,79 @@ title: games
 
 </div>
 
+<script>
+// Slideshow functionality
+function changeSlide(gameId, direction) {
+  const container = document.querySelector(`[data-game="${gameId}"]`);
+  const slides = container.querySelectorAll('.slide');
+  const dots = container.querySelectorAll('.dot');
+  
+  // Find current active slide
+  let currentIndex = 0;
+  slides.forEach((slide, index) => {
+    if (slide.classList.contains('active')) {
+      currentIndex = index;
+    }
+  });
+  
+  // Calculate new index
+  let newIndex = currentIndex + direction;
+  if (newIndex >= slides.length) {
+    newIndex = 0;
+  } else if (newIndex < 0) {
+    newIndex = slides.length - 1;
+  }
+  
+  // Update slides
+  slides[currentIndex].classList.remove('active');
+  slides[newIndex].classList.add('active');
+  
+  // Update dots
+  dots[currentIndex].classList.remove('active');
+  dots[newIndex].classList.add('active');
+}
+
+function currentSlide(gameId, slideIndex) {
+  const container = document.querySelector(`[data-game="${gameId}"]`);
+  const slides = container.querySelectorAll('.slide');
+  const dots = container.querySelectorAll('.dot');
+  
+  // Remove active class from all slides and dots
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+  
+  // Add active class to selected slide and dot
+  slides[slideIndex - 1].classList.add('active');
+  dots[slideIndex - 1].classList.add('active');
+}
+
+// Auto-advance slideshow every 7 seconds (optional)
+document.addEventListener('DOMContentLoaded', function() {
+  const slideshows = document.querySelectorAll('.slideshow-container');
+  
+  slideshows.forEach(slideshow => {
+    const gameId = slideshow.getAttribute('data-game');
+    const slides = slideshow.querySelectorAll('.slide');
+    
+    if (slides.length > 1) {
+      let intervalId = setInterval(() => {
+        changeSlide(gameId, 1);
+      }, 3000); // Auto-advance every 3 seconds
+      
+      // Pause auto-advance on hover
+      slideshow.addEventListener('mouseenter', () => {
+        clearInterval(intervalId);
+      });
+      
+      // Resume auto-advance when hover ends
+      slideshow.addEventListener('mouseleave', () => {
+        intervalId = setInterval(() => {
+          changeSlide(gameId, 1);
+        }, 3000);
+      });
+    }
+  });
+});
+</script>
 
 </div>

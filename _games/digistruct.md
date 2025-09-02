@@ -4,7 +4,6 @@ jamname: "Familiar Game Jam #6"
 tags: [clicker, java, libgdx, cpp, builder]
 image: digistruct-thumb.png
 exturl: http://gamejolt.com/games/digistruct/138399
-link_home: http://gamejolt.com/games/digistruct/138399
 type: jam
 order: 6
 link_windows: https://gamejolt.com/games/digistruct/138399/download/build/319038

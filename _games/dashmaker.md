@@ -6,7 +6,6 @@ image: dashmaker-thumbnail.png
 exturl: http://gamejolt.com/games/dash-maker/203150
 link_windows: https://gamejolt.com/games/dash-maker/203150/download/build/391766
 link_linux: https://gamejolt.com/games/dash-maker/203150/download/build/391767
-link_home: http://gamejolt.com/games/dash-maker/203150
 type: jam
 order: -1
 ---

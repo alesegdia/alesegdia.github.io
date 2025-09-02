@@ -2,9 +2,8 @@
 title: Pheestrew Quest
 jamname: "Ludum Dare #35"
 tags: [rpg, roguelike, cpp, allegro]
-image: phee-thumb.png
+image: [phee1.png, phee2.png, phee3.png, phee4.png, phee5.png, phee6.png, phee8.png, phee9.png]
 exturl: http://ludumdare.com/compo/ludum-dare-35/?action=preview&uid=44038
-link_home: http://ludumdare.com/compo/ludum-dare-35/?action=preview&uid=44038
 type: jam
 order: 30
 link_github: https://github.com/alesegdia/ld35

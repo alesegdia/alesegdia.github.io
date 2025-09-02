@@ -4,7 +4,6 @@ jamname: "Ludum Dare #33"
 tags: [rpg, minigame, java, libgdx, jam]
 image: sefivn-thumb.png
 exturl: http://ludumdare.com/compo/ludum-dare-33/?action=preview&uid=44038
-link_home: http://ludumdare.com/compo/ludum-dare-33/?action=preview&uid=44038
 type: jam
 order: 3
 link_windows: https://github.com/alesegdia/LD33/releases/download/jam0.1/sefivm-desktop.zip

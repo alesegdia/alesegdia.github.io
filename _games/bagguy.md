@@ -4,7 +4,6 @@ jamname: "MonoJam"
 tags: [unity, platformer, minigame]
 image: bagguy.jpg
 exturl: https://gamejolt.com/games/bag-guy/212986
-link_home: https://gamejolt.com/games/bag-guy/212986
 type: jam
 order: 0
 link_web: https://gamejolt.com/games/bag-guy/212986

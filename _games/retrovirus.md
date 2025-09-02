@@ -4,7 +4,6 @@ jamname: "Ludum Dare #34"
 tags: [strategy, stealth, libgdx, java, puzzle]
 image: retrovirus-thumb.png
 exturl: http://ludumdare.com/compo/ludum-dare-34/?action=preview&uid=44038
-link_home: http://ludumdare.com/compo/ludum-dare-34/?action=preview&uid=44038
 type: jam
 order: 17
 link_github: https://github.com/alesegdia/ld34-virusex

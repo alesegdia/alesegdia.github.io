@@ -4,7 +4,6 @@ jamname: "Ludum Dare #31"
 tags: [runner, shooter, unity, jam]
 image: blondmare-thumb.png
 exturl: http://ludumdare.com/compo/ludum-dare-31/?action=preview&uid=44038
-link_home: http://ludumdare.com/compo/ludum-dare-31/?action=preview&uid=44038
 link_github: https://github.com/alesegdia/LD31
 link_windows: http://www.mediafire.com/download/68h1afpy91xv6k8/LD31_blondmare_win.rar
 link_linux: http://www.mediafire.com/download/5ww77cqodfvabox/LD31_blondmare_linux.rar

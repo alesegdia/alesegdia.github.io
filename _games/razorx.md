@@ -4,7 +4,6 @@ jamname: "Godot Game Jam"
 tags: [racing, speed, godot engine, jam]
 image: razorx-thumbnail.png
 exturl: https://choreetsogames.itch.io/razorx
-link_home: https://choreetsogames.itch.io/razorx
 link_linux: https://choreetsogames.itch.io/razorx
 link_windows: https://choreetsogames.itch.io/razorx
 link_github: https://github.com/alesegdia/godot-jam-june-2016
