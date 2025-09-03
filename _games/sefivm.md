@@ -2,7 +2,7 @@
 title: Sefivm
 jamname: "Ludum Dare #33"
 tags: [rpg, minigame, java, libgdx, jam]
-image: sefivn
+image: sefivn-thumb.png
 exturl: http://ludumdare.com/compo/ludum-dare-33/?action=preview&uid=44038
 type: jam
 order: 3

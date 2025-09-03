@@ -2,7 +2,7 @@
 title: D.R.A.K.E.
 jamname: "ludum dare #41"
 tags: [shooter, puzzle, cpp, dragon]
-image: drake
+image: drake.png
 link_ld: https://ldjam.com/events/ludum-dare/41/$78202
 type: jam
 order: 20

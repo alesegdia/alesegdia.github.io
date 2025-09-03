@@ -2,7 +2,7 @@
 title: Heal Me!
 jamname: "TINS2017"
 tags: [minigame, reaction]
-image: healme
+image: healme.png
 link_github: https://github.com/alesegdia/tins2017
 type: jam
 order: -3

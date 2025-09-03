@@ -2,7 +2,7 @@
 title: Razor X
 jamname: "Godot Game Jam"
 tags: [racing, speed, godot engine, jam]
-image: razorx
+image: razorx-thumbnail.png
 exturl: https://choreetsogames.itch.io/razorx
 link_linux: https://choreetsogames.itch.io/razorx
 link_windows: https://choreetsogames.itch.io/razorx

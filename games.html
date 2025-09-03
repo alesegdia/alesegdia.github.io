@@ -128,11 +128,10 @@ title: games
 			<!-- Game Image -->
 			<div class="game-image">
 				{% if game.image %}
-					{% assign found_images = "" | find_images_by_prefix: game.image %}
-					{% if found_images.size > 1 %}
+					{% if game.image.size > 1 %}
 						<!-- Slideshow for multiple images -->
 						<div class="slideshow-container" data-game="{{ game.title | slugify }}">
-							{% for image in found_images %}
+							{% for image in game.image %}
 								<div class="slide {% if forloop.first %}active{% endif %}">
 									<img src="{{site.baseurl}}/assets/{{image}}" alt="{{ game.title }} - Image {{ forloop.index }}" onclick="openImageModal('{{ game.title | slugify }}', {{ forloop.index0 }})" />
 								</div>
@@ -142,17 +141,17 @@ title: games
 							<button class="slide-next" onclick="changeSlide('{{ game.title | slugify }}', 1)">›</button>
 							<!-- Dots indicator -->
 							<div class="slide-dots">
-								{% for image in found_images %}
+								{% for image in game.image %}
 									<span class="dot {% if forloop.first %}active{% endif %}" onclick="currentSlide('{{ game.title | slugify }}', {{ forloop.index }})"></span>
 								{% endfor %}
 							</div>
 						</div>
-					{% elsif found_images.size == 1 %}
-						<!-- Single image -->
-						<img src="{{site.baseurl}}/assets/{{found_images.first}}" alt="{{ game.title }}" onclick="openSingleImageModal('{{site.baseurl}}/assets/{{found_images.first}}', '{{ game.title }}')" />
+					{% elsif game.image.size == 1 %}
+						<!-- Single image from array -->
+						<img src="{{site.baseurl}}/assets/{{game.image[0]}}" alt="{{ game.title }}" onclick="openSingleImageModal('{{site.baseurl}}/assets/{{game.image[0]}}', '{{ game.title }}')" />
 					{% else %}
-						<!-- Fallback: no images found with prefix -->
-						<img src="{{site.baseurl}}/assets/placeholder.png" alt="{{ game.title }}" />
+						<!-- Single image as string -->
+						<img src="{{site.baseurl}}/assets/{{game.image}}" alt="{{ game.title }}" onclick="openSingleImageModal('{{site.baseurl}}/assets/{{game.image}}', '{{ game.title }}')" />
 					{% endif %}
 				{% else %}
 					<img src="{{site.baseurl}}/assets/placeholder.png" alt="{{ game.title }}" />

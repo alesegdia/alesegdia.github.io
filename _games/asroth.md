@@ -2,7 +2,7 @@
 title: Asroth
 jamname: "GBJam #4"
 tags: [platformer, shooter, roguelike, java, libgdx, metroidvania]
-image: asroth
+image: [asroth1.png, asroth2.png, asroth3.png, asroth4.png, asroth6.png]
 type: jam
 order: 35
 link_github: https://github.com/alesegdia/gbjam-asroth

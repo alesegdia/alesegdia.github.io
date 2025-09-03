@@ -1,7 +1,7 @@
 ---
 title: CARdieMAN
 tags: [runner, mobile, android, minigame, libgdx]
-image: cardieman
+image: cardieman-thumb.jpg
 type: complete
 order: -2
 link_github: https://github.com/alesegdia/CARdieMAN

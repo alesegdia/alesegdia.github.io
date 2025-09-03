@@ -2,7 +2,7 @@
 title: Sreda Vniecaps
 jamname: "Familiar Game Jam #5"
 tags: [arcade, strategy, lua, love2d]
-image: sreda
+image: [sreda1.png, sreda2.png, sreda3.png, sreda4.png, sreda5.png, sreda6.png, sreda7.png, sreda8.png, sreda-thumb.png]
 exturl: http://gamejolt.com/games/sreda-vniecaps/104049
 type: jam
 order: 6

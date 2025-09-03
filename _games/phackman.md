@@ -1,7 +1,7 @@
 ---
 title: Phackman
 tags: [roguelike, pacman, tower defense, cpp]
-image: phackman
+image: phackman.png
 exturl: https://github.com/alesegdia/phackman
 link_github: https://github.com/alesegdia/phackman
 type: prototype

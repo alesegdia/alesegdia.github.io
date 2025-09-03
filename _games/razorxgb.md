@@ -2,6 +2,7 @@
 title: RazorX GB
 jamname: "BitBitJAM#3"
 tags: [racing, gameboy]
+image: placeholder.png
 exturl: https://github.com/alesegdia/razorx-gb
 link_github: https://github.com/alesegdia/razorx-gb
 type: jam

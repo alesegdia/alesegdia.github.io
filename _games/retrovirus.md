@@ -2,7 +2,7 @@
 title: Retrovirus
 jamname: "Ludum Dare #34"
 tags: [strategy, stealth, libgdx, java, puzzle]
-image: retrovirus
+image: [retrovirus1.png, retrovirus2.png, retrovirus3.png, retrovirus4.png, retrovirus5.png, retrovirus-thumb.png]
 link_ld: https://web.archive.org/web/20170919090344/http://ludumdare.com/compo/ludum-dare-34/?action=preview&uid=44038
 type: jam
 order: 17

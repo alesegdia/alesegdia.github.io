@@ -2,7 +2,7 @@
 title: Laser Temple
 jamname: "Linux Game Jam 2018"
 tags: [puzzle, cga, lua, love2d]
-image: lasertemple
+image: lasertemple.png
 type: jam
 order: 30
 link_youtube: https://www.youtube.com/watch?v=QakKhj6apZQ

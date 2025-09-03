@@ -1,7 +1,7 @@
 ---
 title: Miniray
 tags: [fps, rpg, cpp, opengl]
-image: miniray
+image: [miniray1.png, miniray2.png, miniray3.png, miniray4.png, miniray5.png, miniray6.png, miniray-thumb.png]
 link_itchio: https://alesegdia.itch.io/miniray
 link_github: https://github.com/alesegdia/miniray
 link_youtube: https://www.youtube.com/watch?v=GjMc8_d3KA8

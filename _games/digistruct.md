@@ -2,7 +2,7 @@
 title: Digistruct
 jamname: "Familiar Game Jam #6"
 tags: [clicker, java, libgdx, cpp, builder]
-image: digistruct
+image: digistruct-thumb.png
 link_gamejolt: http://gamejolt.com/games/digistruct/138399
 type: jam
 order: 6

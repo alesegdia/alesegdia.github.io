@@ -2,7 +2,7 @@
 title: Bag Guy
 jamname: "MonoJam"
 tags: [unity, platformer, minigame]
-image: bagguy
+image: bagguy.jpg
 type: jam
 order: 0
 link_gamejolt: https://gamejolt.com/games/bag-guy/212986

@@ -2,7 +2,7 @@
 title: Zomboids
 jamname: "AIJam 2015"
 tags: [shooter, procedural, flock-ai, lua, love2d]
-image: zomboids
+image: zomboids-thumb.png
 exturl: https://razz.itch.io/zomboids
 type: jam
 order: 2
