@@ -6,7 +6,7 @@
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
   
   h4 {
     color: #495057;
@@ -17,7 +17,7 @@
   // Enhanced selection state for tags within filters container
   a[class*="filter-tag-name-"].filter-selected {
     border: 2px inset #c0c0c0 !important;
-    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3);
     transform: translateY(1px);
   }
 }
@@ -32,7 +32,7 @@
 .game-card {
   background: #f0f0f0;
   border-radius: 0;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
   border: 3px outset #c0c0c0;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -409,48 +409,52 @@
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.2);
   }
   
   &.filter-selected {
     border-color: #333;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.2);
     transform: translateY(1px);
   }
   
   &.tag-orange {
-    background-color: #ff9800;
-    color: white;
+    background: linear-gradient(45deg, #ff9800 0%, #ff9800 50%, #ffb74d 50%, #ffb74d 100%);
+    color: #4a2c0a;
+    border: 2px outset #ff9800;
     
     &:hover {
-      background-color: #e68900;
+      background: linear-gradient(45deg, #ffb74d 0%, #ffb74d 50%, #ffcc80 50%, #ffcc80 100%);
     }
   }
   
   &.tag-blue {
-    background-color: #2196f3;
-    color: white;
+    background: linear-gradient(45deg, #2196f3 0%, #2196f3 50%, #64b5f6 50%, #64b5f6 100%);
+    color: #0a2e5c;
+    border: 2px outset #2196f3;
     
     &:hover {
-      background-color: #1976d2;
+      background: linear-gradient(45deg, #64b5f6 0%, #64b5f6 50%, #90caf9 50%, #90caf9 100%);
     }
   }
   
   &.tag-green {
-    background-color: #4caf50;
-    color: white;
+    background: linear-gradient(45deg, #4caf50 0%, #4caf50 50%, #81c784 50%, #81c784 100%);
+    color: #0f2e10;
+    border: 2px outset #4caf50;
     
     &:hover {
-      background-color: #388e3c;
+      background: linear-gradient(45deg, #81c784 0%, #81c784 50%, #a5d6a7 50%, #a5d6a7 100%);
     }
   }
   
   &.tag-gray {
-    background-color: #9e9e9e;
-    color: white;
+    background: linear-gradient(45deg, #9e9e9e 0%, #9e9e9e 50%, #bdbdbd 50%, #bdbdbd 100%);
+    color: #212121;
+    border: 2px outset #9e9e9e;
     
     &:hover {
-      background-color: #757575;
+      background: linear-gradient(45deg, #bdbdbd 0%, #bdbdbd 50%, #e0e0e0 50%, #e0e0e0 100%);
     }
   }
 }
@@ -476,7 +480,7 @@
     background: #000;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.5);
     padding-top: 50px;
   }
   

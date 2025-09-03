@@ -43,7 +43,7 @@ a[class*="filter-tag-name-"] {
 	padding: 4px 8px;
 	margin: 2px;
 	border: 2px outset #c0c0c0;
-	border-radius: 0;
+	border-radius: 8px;
 	display: inline-block;
 	text-decoration: none;
 	background-color: #c0c0c0;
@@ -109,31 +109,43 @@ a[class*="filter-tag-name-"]:hover {
 .tag-size-low {
 	font-size: 0.85rem;
 	padding: 3px 7px;
-	background: linear-gradient(135deg, #00ff00 0%, #008000 100%) !important;
-	color: #000080 !important;
+	background: linear-gradient(135deg, #00ff00 0%, #00ff00 50%, #40c040 50%, #40c040 100%) !important;
+	color: #0d4f0d !important;
 	border: 2px outset #00ff00 !important;
+	border-radius: 8px !important;
 	text-shadow: 1px 1px 0px #ffffff;
 	font-weight: bold;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .tag-size-mid {
 	font-size: 1.1rem;
 	padding: 5px 9px;
 	font-weight: bold;
-	background: linear-gradient(135deg, #ffff00 0%, #ff8000 100%) !important;
+	background: linear-gradient(135deg, #ffff00 0%, #ffff00 50%, #ffb340 50%, #ffb340 100%) !important;
 	color: #800000 !important;
 	border: 2px outset #ffff00 !important;
+	border-radius: 8px !important;
 	text-shadow: 1px 1px 0px #ffffff;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .tag-size-high {
 	font-size: 1.3rem;
 	padding: 7px 11px;
 	font-weight: bold;
-	background: linear-gradient(135deg, #ff00ff 0%, #800080 100%) !important;
-	color: #ffffff !important;
+	background: linear-gradient(135deg, #ff00ff 0%, #ff00ff 50%, #b040b0 50%, #b040b0 100%) !important;
+	color: #4a0e4e !important;
 	border: 2px outset #ff00ff !important;
+	border-radius: 8px !important;
 	text-shadow: 2px 2px 0px #000000;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .filter-visible {
