@@ -484,3 +484,20 @@ a:link:hover, a:visited:hover {
 	}
 }
 
+
+/* Vaporwave Buttons — keep buttons, but do not override filter tags */
+.btn {
+	--btn1:#ff00ff; --btn2:#00e5ff;
+	color:#000; font-weight:800; text-transform:uppercase;
+	padding:8px 14px; border-radius:6px;
+	background: linear-gradient(90deg, var(--btn1), var(--btn2));
+	border:2px solid #000;
+	text-decoration:none; display:inline-block;
+	transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.25); filter: contrast(1.05) saturate(1.05); }
+.btn:active { transform: translateY(0); box-shadow: 0 2px 0 rgba(0,0,0,0.25); }
+.btn-ghost { background: transparent; color:#000; border:2px dashed #000; }
+.btn-ghost:hover { background: rgba(255,255,255,0.2); }
+
+
