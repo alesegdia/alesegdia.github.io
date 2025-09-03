@@ -1,7 +1,7 @@
 ---
 title: Ufofrog
 tags: [arcade, minigame, story, lua, love2d]
-image: ufofrog-thumb.png
+image: ufofrog
 exturl: https://github.com/alesegdia/ufofrog/releases
 link_github: https://github.com/alesegdia/ufofrog
 link_windows: https://github.com/alesegdia/ufofrog/releases/download/0.3/ufofrog.win.zip

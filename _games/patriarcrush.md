@@ -1,7 +1,7 @@
 ---
 title: Patriar Crush
 tags: [match3, phaserjs]
-image: patriarcrush.png
+image: patriarcrush
 exturl: https://alesegdia.github.io/famjam8/
 type: prototype
 order: 2

@@ -2,13 +2,13 @@
 title: Sreda Vniecaps
 jamname: "Familiar Game Jam #5"
 tags: [arcade, strategy, lua, love2d]
-image: sreda-thumb.png
+image: sreda
 exturl: http://gamejolt.com/games/sreda-vniecaps/104049
 type: jam
 order: 6
-link_windows: https://gamejolt.com/games/sreda-vniecaps/104049/download/build/263474
-link_linux: https://github.com/alesegdia/famjam5/releases/download/jam-version/SredaVniecaps.love
-link_mac: https://github.com/alesegdia/famjam5/releases/download/jam-version/SredaVniecaps.love
+link_gamejolt: https://gamejolt.com/games/sreda-vniecaps/104049
+exturl: https://github.com/alesegdia/famjam5/releases/download/jam-version/SredaVniecaps.love
+link_itchio: https://alesegdia.itch.io/sreda-vniecaps
 link_github: https://github.com/alesegdia/famjam5
 ---
 

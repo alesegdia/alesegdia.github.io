@@ -1,9 +1,10 @@
 ---
 title: Miniray
 tags: [fps, rpg, cpp, opengl]
-image: miniray-thumb.png
-exturl: https://github.com/alesegdia/miniray
+image: miniray
+link_itchio: https://alesegdia.itch.io/miniray
 link_github: https://github.com/alesegdia/miniray
+link_youtube: https://www.youtube.com/watch?v=GjMc8_d3KA8
 type: prototype
 order: 1
 ---

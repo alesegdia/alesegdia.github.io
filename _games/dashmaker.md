@@ -2,10 +2,10 @@
 title: Dash Maker
 jamname: "Familiar Game Jam #7"
 tags: [sports, arcade, retro, runner, humor, cpp, alligator, allegro]
-image: dashmaker-thumbnail.png
-exturl: http://gamejolt.com/games/dash-maker/203150
-link_windows: https://gamejolt.com/games/dash-maker/203150/download/build/391766
-link_linux: https://gamejolt.com/games/dash-maker/203150/download/build/391767
+image: dashmaker
+link_gamejolt: http://gamejolt.com/games/dash-maker/203150
+link_itchio: https://alesegdia.itch.io/dash-maker
+link_github: https://github.com/alesegdia/famjam7
 type: jam
 order: -1
 ---

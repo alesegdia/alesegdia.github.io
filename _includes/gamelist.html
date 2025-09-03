@@ -4,7 +4,12 @@
   {% if game.type == include.gametag %}
     <div class="game-entry">
         {% if game.image %}
-        <a href="{{game.exturl}}" target="_blank" class="bgimg" style="background-image: url('{{site.baseurl}}/assets/{{game.image}}')">hiddenlink</a>
+        {% assign found_images = "" | find_images_by_prefix: game.image %}
+        {% if found_images.size > 0 %}
+        <a href="{{game.exturl}}" target="_blank" class="bgimg" style="background-image: url('{{site.baseurl}}/assets/{{found_images.first}}')">hiddenlink</a>
+        {% else %}
+        <a href="{{game.exturl}}" target="_blank" class="bgimg" style="background-image: url('{{site.baseurl}}/assets/placeholder.png')">hiddenlink</a>
+        {% endif %}
         {% else %}
         <a href="{{game.exturl}}" class="bgimg" style="background-image: url('{{site.baseurl}}/assets/placeholder.png')">hiddenlink</a>
         {% endif %}

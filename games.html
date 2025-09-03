@@ -128,12 +128,13 @@ title: games
 			<!-- Game Image -->
 			<div class="game-image">
 				{% if game.image %}
-					{% if game.image.size and game.image.size > 1 %}
+					{% assign found_images = "" | find_images_by_prefix: game.image %}
+					{% if found_images.size > 1 %}
 						<!-- Slideshow for multiple images -->
 						<div class="slideshow-container" data-game="{{ game.title | slugify }}">
-							{% for image in game.image %}
+							{% for image in found_images %}
 								<div class="slide {% if forloop.first %}active{% endif %}">
-									<img src="{{site.baseurl}}/assets/{{image}}" alt="{{ game.title }} - Image {{ forloop.index }}" />
+									<img src="{{site.baseurl}}/assets/{{image}}" alt="{{ game.title }} - Image {{ forloop.index }}" onclick="openImageModal('{{ game.title | slugify }}', {{ forloop.index0 }})" />
 								</div>
 							{% endfor %}
 							<!-- Navigation arrows -->
@@ -141,17 +142,17 @@ title: games
 							<button class="slide-next" onclick="changeSlide('{{ game.title | slugify }}', 1)">›</button>
 							<!-- Dots indicator -->
 							<div class="slide-dots">
-								{% for image in game.image %}
+								{% for image in found_images %}
 									<span class="dot {% if forloop.first %}active{% endif %}" onclick="currentSlide('{{ game.title | slugify }}', {{ forloop.index }})"></span>
 								{% endfor %}
 							</div>
 						</div>
-					{% elsif game.image.size and game.image.size == 1 %}
-						<!-- Single image from array -->
-						<img src="{{site.baseurl}}/assets/{{game.image.first}}" alt="{{ game.title }}" />
+					{% elsif found_images.size == 1 %}
+						<!-- Single image -->
+						<img src="{{site.baseurl}}/assets/{{found_images.first}}" alt="{{ game.title }}" onclick="openSingleImageModal('{{site.baseurl}}/assets/{{found_images.first}}', '{{ game.title }}')" />
 					{% else %}
-						<!-- Single image as string -->
-						<img src="{{site.baseurl}}/assets/{{game.image}}" alt="{{ game.title }}" />
+						<!-- Fallback: no images found with prefix -->
+						<img src="{{site.baseurl}}/assets/placeholder.png" alt="{{ game.title }}" />
 					{% endif %}
 				{% else %}
 					<img src="{{site.baseurl}}/assets/placeholder.png" alt="{{ game.title }}" />
@@ -175,31 +176,40 @@ title: games
 				<!-- Game Links -->
 				<div class="game-links">
 					{% if game.exturl %}
-						<a href="{{ game.exturl }}" target="_blank" title="View Game Page" class="primary-link">🌐 View Game</a>
+						<a href="{{ game.exturl }}" target="_blank" title="View Game Page" class="primary-link" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><span style="font-size: 72px; line-height: 1;">🌐</span></a>
 					{% endif %}
 					{% if game.link_web %}
-						<a href="{{ game.link_web }}" target="_blank" title="Play Online">🎮 Play</a>
+						<a href="{{ game.link_web }}" target="_blank" title="Play Online" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><span style="font-size: 72px; line-height: 1;">🎮</span></a>
 					{% endif %}
 					{% if game.link_windows %}
-						<a href="{{ game.link_windows }}" target="_blank" title="Download for Windows">🪟 Windows</a>
+						<a href="{{ game.link_windows }}" target="_blank" title="Download for Windows" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><img src="{{site.baseurl}}/assets/windows.png" alt="Windows" style="max-width: 60px; max-height: 60px; object-fit: contain;"></a>
 					{% endif %}
 					{% if game.link_linux %}
-						<a href="{{ game.link_linux }}" target="_blank" title="Download for Linux">🐧 Linux</a>
+						<a href="{{ game.link_linux }}" target="_blank" title="Download for Linux" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><img src="{{site.baseurl}}/assets/linux.png" alt="Linux" style="max-width: 60px; max-height: 60px; object-fit: contain;"></a>
 					{% endif %}
 					{% if game.link_mac %}
-						<a href="{{ game.link_mac }}" target="_blank" title="Download for Mac">🍎 Mac</a>
+						<a href="{{ game.link_mac }}" target="_blank" title="Download for Mac" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><img src="{{site.baseurl}}/assets/mac.png" alt="Mac" style="max-width: 60px; max-height: 60px; object-fit: contain;"></a>
 					{% endif %}
 					{% if game.link_android %}
-						<a href="{{ game.link_android }}" target="_blank" title="Download for Android">🤖 Android</a>
+						<a href="{{ game.link_android }}" target="_blank" title="Download for Android" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><span style="font-size: 72px; line-height: 1;">🤖</span></a>
 					{% endif %}
 					{% if game.link_github %}
-						<a href="{{ game.link_github }}" target="_blank" title="View Source Code">💻 Source</a>
+						<a href="{{ game.link_github }}" target="_blank" title="View Source Code" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><img src="{{site.baseurl}}/assets/github-icon.png" alt="GitHub" style="width: 72px; height: 72px;"></a>
+					{% endif %}
+					{% if game.link_gamejolt %}
+						<a href="{{ game.link_gamejolt }}" target="_blank" title="Play on GameJolt" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><img src="{{site.baseurl}}/assets/gamejolt.png" alt="GameJolt" style="width: 72px; height: 72px;"></a>
+					{% endif %}
+					{% if game.link_itchio %}
+						<a href="{{ game.link_itchio }}" target="_blank" title="Play on Itch.io" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><img src="{{site.baseurl}}/assets/itch-io.svg" alt="Itch.io" style="width: 72px; height: 72px;"></a>
+					{% endif %}
+					{% if game.link_ld %}
+						<a href="{{ game.link_ld }}" target="_blank" title="View on Ludum Dare" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><img src="{{site.baseurl}}/assets/ludumdare.jpg" alt="Ludum Dare" style="width: 72px; height: 72px;"></a>
 					{% endif %}
 					{% if game.link_home %}
-						<a href="{{ game.link_home }}" target="_blank" title="Game Page">🏠 Home</a>
+						<a href="{{ game.link_home }}" target="_blank" title="Game Page" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><span style="font-size: 72px; line-height: 1;">🏠</span></a>
 					{% endif %}
 					{% if game.link_youtube %}
-						<a href="{{ game.link_youtube }}" target="_blank" title="Watch Video">📹 Video</a>
+						<a href="{{ game.link_youtube }}" target="_blank" title="Watch Video" style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; padding: 4px;"><img src="{{site.baseurl}}/assets/youtube.png" alt="YouTube" style="width: 72px; height: 72px;"></a>
 					{% endif %}
 				</div>
 			</div>
@@ -284,6 +294,166 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Modal slideshow functionality
+let currentModalSlides = [];
+let currentModalIndex = 0;
+
+function openImageModal(gameId, slideIndex) {
+  const container = document.querySelector(`[data-game="${gameId}"]`);
+  const slides = container.querySelectorAll('.slide img');
+  
+  // Collect all image sources
+  currentModalSlides = Array.from(slides).map(img => ({
+    src: img.src,
+    alt: img.alt
+  }));
+  
+  currentModalIndex = slideIndex;
+  showModal();
+}
+
+function openSingleImageModal(imageSrc, gameTitle) {
+  currentModalSlides = [{
+    src: imageSrc,
+    alt: gameTitle
+  }];
+  
+  currentModalIndex = 0;
+  showModal();
+}
+
+function showModal() {
+  const modal = document.getElementById('imageModal');
+  const slideWrapper = modal.querySelector('.modal-slide-wrapper');
+  const dotsContainer = modal.querySelector('.modal-slide-dots');
+  
+  // Clear existing content
+  slideWrapper.innerHTML = '';
+  dotsContainer.innerHTML = '';
+  
+  // Add slides
+  currentModalSlides.forEach((slide, index) => {
+    const slideDiv = document.createElement('div');
+    slideDiv.className = `modal-slide ${index === currentModalIndex ? 'active' : ''}`;
+    slideDiv.innerHTML = `<img src="${slide.src}" alt="${slide.alt}" />`;
+    slideWrapper.appendChild(slideDiv);
+    
+    // Add dot
+    const dot = document.createElement('span');
+    dot.className = `modal-dot ${index === currentModalIndex ? 'active' : ''}`;
+    dot.onclick = () => goToModalSlide(index);
+    dotsContainer.appendChild(dot);
+  });
+  
+  // Show/hide navigation based on number of slides
+  const prevBtn = modal.querySelector('.modal-slide-prev');
+  const nextBtn = modal.querySelector('.modal-slide-next');
+  const dotsDiv = modal.querySelector('.modal-slide-dots');
+  
+  if (currentModalSlides.length <= 1) {
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
+    dotsDiv.style.display = 'none';
+  } else {
+    prevBtn.style.display = 'block';
+    nextBtn.style.display = 'block';
+    dotsDiv.style.display = 'block';
+  }
+  
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImageModal() {
+  const modal = document.getElementById('imageModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function changeModalSlide(direction) {
+  if (currentModalSlides.length <= 1) return;
+  
+  const modal = document.getElementById('imageModal');
+  const slides = modal.querySelectorAll('.modal-slide');
+  const dots = modal.querySelectorAll('.modal-dot');
+  
+  // Remove active class from current slide and dot
+  slides[currentModalIndex].classList.remove('active');
+  dots[currentModalIndex].classList.remove('active');
+  
+  // Calculate new index
+  currentModalIndex += direction;
+  if (currentModalIndex >= currentModalSlides.length) {
+    currentModalIndex = 0;
+  } else if (currentModalIndex < 0) {
+    currentModalIndex = currentModalSlides.length - 1;
+  }
+  
+  // Add active class to new slide and dot
+  slides[currentModalIndex].classList.add('active');
+  dots[currentModalIndex].classList.add('active');
+}
+
+function goToModalSlide(index) {
+  if (currentModalSlides.length <= 1) return;
+  
+  const modal = document.getElementById('imageModal');
+  const slides = modal.querySelectorAll('.modal-slide');
+  const dots = modal.querySelectorAll('.modal-dot');
+  
+  // Remove active class from current slide and dot
+  slides[currentModalIndex].classList.remove('active');
+  dots[currentModalIndex].classList.remove('active');
+  
+  // Set new index
+  currentModalIndex = index;
+  
+  // Add active class to new slide and dot
+  slides[currentModalIndex].classList.add('active');
+  dots[currentModalIndex].classList.add('active');
+}
+
+// Close modal when clicking outside of it
+window.addEventListener('load', function() {
+  const modal = document.getElementById('imageModal');
+  
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeImageModal();
+      }
+    });
+  }
+  
+  // Close modal with escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeImageModal();
+    }
+  });
+});
 </script>
+
+<!-- Image Modal -->
+<div id="imageModal" class="image-modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeImageModal()">&times;</span>
+    <div class="modal-navigation-container">
+      <!-- Navigation arrows outside image -->
+      <button class="modal-slide-prev" onclick="changeModalSlide(-1)">‹</button>
+      <div class="modal-slideshow-container">
+        <div class="modal-slide-wrapper">
+          <!-- Slides will be populated by JavaScript -->
+        </div>
+      </div>
+      <button class="modal-slide-next" onclick="changeModalSlide(1)">›</button>
+    </div>
+    <!-- Dots indicator moved outside of image container -->
+    <div class="modal-slide-dots">
+      <!-- Dots will be populated by JavaScript -->
+    </div>
+  </div>
+</div>
 
 </div>

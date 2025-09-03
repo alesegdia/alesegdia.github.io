@@ -2,7 +2,7 @@
 title: The Vaker
 jamname: "LowRezJam 2016"
 tags: [humor, minigame]
-image: vakerthumb.png
+image: vaker
 exturl: http://gamejolt.com/games/the-vaker/138705
 link_github: https://github.com/alesegdia/LD31
 link_windows: https://gamejolt.com/games/the-vaker/138705/download/build/319525

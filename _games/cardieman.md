@@ -1,14 +1,12 @@
 ---
 title: CARdieMAN
 tags: [runner, mobile, android, minigame, libgdx]
-image: cardieman-thumb.jpg
-exturl: https://play.google.com/store/apps/details?id=com.ufofrog.cardieman
+image: cardieman
 type: complete
 order: -2
-link_android: https://play.google.com/store/apps/details?id=com.ufofrog.cardieman
 link_github: https://github.com/alesegdia/CARdieMAN
 ---
 
-CARdieMAN is a simple game I made for a class assignment which is published in the Google Play Store just
+CARdieMAN is a simple game I made for a class assignment which *was* published in the Google Play Store just
 because someone else tried to do it on its own. The game is very simple, you just have to jump over all
 hazards you'll get in your way: cars, skaters and even UFOs.

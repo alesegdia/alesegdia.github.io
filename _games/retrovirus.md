@@ -2,11 +2,12 @@
 title: Retrovirus
 jamname: "Ludum Dare #34"
 tags: [strategy, stealth, libgdx, java, puzzle]
-image: retrovirus-thumb.png
-exturl: http://ludumdare.com/compo/ludum-dare-34/?action=preview&uid=44038
+image: retrovirus
+link_ld: https://web.archive.org/web/20170919090344/http://ludumdare.com/compo/ludum-dare-34/?action=preview&uid=44038
 type: jam
 order: 17
 link_github: https://github.com/alesegdia/ld34-virusex
+link_itchio: https://alesegdia.itch.io/retrovirus
 ---
 
 In Retrovirus you incarnate a Virus that has to pass through all nodes in an organism. You have to be careful

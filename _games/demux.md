@@ -1,9 +1,9 @@
 ---
 title: Demux
 tags: [metroidvania, platformer, prototype, roguelike, java, libgdx, ecs, procedural]
-image: demux.png
-exturl: https://github.com/alesegdia/demux
+image: demux
 link_github: https://github.com/alesegdia/demux
+link_itchio: https://alesegdia.itch.io/demux
 type: prototype
 order: 1
 ---

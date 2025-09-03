@@ -2,12 +2,11 @@
 title: Laser Temple
 jamname: "Linux Game Jam 2018"
 tags: [puzzle, cga, lua, love2d]
-image: lasertemple.png
-exturl: https://razz.itch.io/laser-temple
+image: lasertemple
 type: jam
 order: 30
 link_youtube: https://www.youtube.com/watch?v=QakKhj6apZQ
-link_linux: https://razz.itch.io/laser-temple
+link_itchio: https://razz.itch.io/laser-temple
 link_github: https://github.com/alesegdia/laser-temple
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: StarShipKillers
 tags: [shooter, experimental]
-image: ssk-thumb.png
+image: ssk
 exturl: https://github.com/alesegdia/sskillers
 link_github: https://github.com/alesegdia/sskillers
 link_web: http://alesegdia.github.io/sskillers/

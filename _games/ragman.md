@@ -1,7 +1,7 @@
 ---
 title: Ragman
 tags: [ai, framework, ruby, gosu, arcade, pacman]
-image: ragman-thumb.png
+image: ragman
 exturl: https://github.com/alesegdia/ragman
 link_github: https://github.com/alesegdia/ragman
 type: prototype

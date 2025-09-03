@@ -2,14 +2,12 @@
 title: Digistruct
 jamname: "Familiar Game Jam #6"
 tags: [clicker, java, libgdx, cpp, builder]
-image: digistruct-thumb.png
-exturl: http://gamejolt.com/games/digistruct/138399
+image: digistruct
+link_gamejolt: http://gamejolt.com/games/digistruct/138399
 type: jam
 order: 6
-link_windows: https://gamejolt.com/games/digistruct/138399/download/build/319038
-link_linux: https://gamejolt.com/games/digistruct/138399/download/build/319038
-link_mac: https://gamejolt.com/games/digistruct/138399/download/build/319038
 link_github: https://github.com/alesegdia/famjam6
+link_itchio: https://alesegdia.itch.io/digistruct
 ---
 
 Digistruct was an experimental game somehow based on Factorio. It mixes clicker and strategy/construction

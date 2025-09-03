@@ -2,7 +2,7 @@
 title: Ragequit
 jamname: "Familiar Game Jam #3"
 tags: [arcade, gory, lua, love2d, slasher]
-image: ragequit-thumb.png
+image: ragequit
 exturl: http://gamejolt.com/games/ragequit/36202
 type: jam
 order: 5
