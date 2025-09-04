@@ -4,30 +4,38 @@ permalink: /tools/
 title: projects
 ---
 
-<div class="general-container project-section">
-	<h1>Projects</h1>
-	{% for project in site.projects %}
-		<div class="project">
-			<div class="project-denomination">
-				<div class="project-name">
-					<h2><a href="{{ project.exturl }}">{{ project.name }}</a></h2>
-					<h4>{{ project.category }}</h4>
-				</div>	
-				<div class="project-stuff">
-					<div class="project-status">
-						{% for tag in project.status %} 
-							{% include statusbadge.html badge=tag %}
-						{% endfor %}
-					</div>
-					<div class="project-techs">
-						<ul class="project-techs-list">
-						{% for tech in project.techs %}
-							<li>{{ tech }}</li>
-						{% endfor %}
-						</ul>
-					</div>
-				</div>
-			</div>
+<div class="container">
+  <div class="general-container project-section">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center mb-8">Projects</h1>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        {% for project in site.projects %}
+          <div class="project mb-6">
+            <div class="project-denomination">
+              <div class="project-name">
+                <h2><a href="{{ project.exturl }}">{{ project.name }}</a></h2>
+                <h4>{{ project.category }}</h4>
+              </div>	
+              <div class="project-stuff">
+                <div class="project-status">
+                  {% for tag in project.status %} 
+                    {% include statusbadge.html badge=tag %}
+                  {% endfor %}
+                </div>
+                <div class="project-techs">
+                  <ul class="project-techs-list">
+                  {% for tech in project.techs %}
+                    <li>{{ tech }}</li>
+                  {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
 			<div class="project-description">{{ project.content }}</div>
 			<hr />
 		</div>

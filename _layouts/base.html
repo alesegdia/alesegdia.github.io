@@ -19,7 +19,15 @@
 				</button>
 			</div>
 			<div class="taskbar-middle">
-				<div class="taskbar-items">
+				<!-- Mobile hamburger menu -->
+				<button class="mobile-menu-toggle d-md-none" id="mobile-menu-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				
+				<!-- Desktop taskbar items -->
+				<div class="taskbar-items d-none d-md-flex">
 					<div class="taskbar-item active" onclick="window.location.href='{{site.url}}/'">
 						<span class="taskbar-icon">🎮</span>
 						<span class="taskbar-label">Games Portfolio</span>
@@ -35,6 +43,42 @@
 					<div class="taskbar-item" onclick="window.open('https://www.linkedin.com/in/alesegdia/', '_blank')">
 						<span class="taskbar-icon">📄</span>
 						<span class="taskbar-label">Resume</span>
+					</div>
+				</div>
+				
+				<!-- Mobile menu overlay -->
+				<div class="mobile-menu-overlay d-md-none" id="mobile-menu-overlay">
+					<div class="mobile-menu-content">
+						<div class="mobile-menu-header">
+							<h3>Navigation</h3>
+							<button class="mobile-menu-close" id="mobile-menu-close">×</button>
+						</div>
+						<div class="mobile-menu-items">
+							<a class="mobile-menu-item" href="{{site.url}}/">
+								<span class="menu-icon">🎮</span>
+								<span class="menu-label">Games Portfolio</span>
+							</a>
+							<a class="mobile-menu-item" href="{{site.url}}/projects">
+								<span class="menu-icon">💼</span>
+								<span class="menu-label">Projects</span>
+							</a>
+							<a class="mobile-menu-item" href="{{site.url}}/tools">
+								<span class="menu-icon">🔧</span>
+								<span class="menu-label">Tools</span>
+							</a>
+							<a class="mobile-menu-item" href="{{site.url}}/blog">
+								<span class="menu-icon">📝</span>
+								<span class="menu-label">Blog</span>
+							</a>
+							<a class="mobile-menu-item" href="https://github.com/alesegdia" target="_blank">
+								<span class="menu-icon">💻</span>
+								<span class="menu-label">GitHub</span>
+							</a>
+							<a class="mobile-menu-item" href="https://www.linkedin.com/in/alesegdia/" target="_blank">
+								<span class="menu-icon">📄</span>
+								<span class="menu-label">Resume</span>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -89,6 +133,39 @@
 						timeElement.textContent = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 						dateElement.textContent = now.toLocaleDateString([], {month: 'short', day: 'numeric'});
 					}
+				}
+				
+				// Mobile menu functionality
+				const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+				const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+				const mobileMenuClose = document.getElementById('mobile-menu-close');
+				
+				if (mobileMenuToggle && mobileMenuOverlay && mobileMenuClose) {
+					function openMobileMenu() {
+						mobileMenuOverlay.classList.add('active');
+						document.body.style.overflow = 'hidden';
+					}
+					
+					function closeMobileMenu() {
+						mobileMenuOverlay.classList.remove('active');
+						document.body.style.overflow = '';
+					}
+					
+					mobileMenuToggle.addEventListener('click', openMobileMenu);
+					mobileMenuClose.addEventListener('click', closeMobileMenu);
+					
+					// Close menu when clicking outside
+					mobileMenuOverlay.addEventListener('click', function(e) {
+						if (e.target === mobileMenuOverlay) {
+							closeMobileMenu();
+						}
+					});
+					
+					// Close menu when clicking on menu items
+					const menuItems = mobileMenuOverlay.querySelectorAll('.mobile-menu-item');
+					menuItems.forEach(item => {
+						item.addEventListener('click', closeMobileMenu);
+					});
 				}
 				
 				// Update clock immediately and then every second

@@ -1,3 +1,164 @@
+// CSS Custom Properties for dynamic theming
+:root {
+  --retro-bg: #{$retro-bg};
+  --retro-text: #{$retro-text};
+  --retro-link: #{$retro-link};
+  --retro-accent: #{$retro-magenta};
+  --space-unit: #{$space-4};
+  --container-padding: #{$space-4};
+  --border-radius: 8px;
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.6s ease;
+}
+
+// Responsive mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (min-width: $breakpoint-xs) { @content; }
+  }
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  }
+  @if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}
+
+// Mobile-first container system
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  
+  @include respond-to(sm) {
+    max-width: $container-sm;
+    --container-padding: #{$space-6};
+  }
+  
+  @include respond-to(md) {
+    max-width: $container-md;
+  }
+  
+  @include respond-to(lg) {
+    max-width: $container-lg;
+  }
+  
+  @include respond-to(xl) {
+    max-width: $container-xl;
+  }
+}
+
+// Responsive grid system
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--space-unit) * -0.5);
+  margin-right: calc(var(--space-unit) * -0.5);
+}
+
+.col {
+  flex: 1;
+  padding-left: calc(var(--space-unit) * 0.5);
+  padding-right: calc(var(--space-unit) * 0.5);
+  min-width: 0; // Prevent flex items from overflowing
+}
+
+// Column classes for responsive layouts
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 percentage($i / 12);
+    max-width: percentage($i / 12);
+    padding-left: calc(var(--space-unit) * 0.5);
+    padding-right: calc(var(--space-unit) * 0.5);
+  }
+  
+  @include respond-to(sm) {
+    .col-sm-#{$i} {
+      flex: 0 0 percentage($i / 12);
+      max-width: percentage($i / 12);
+    }
+  }
+  
+  @include respond-to(md) {
+    .col-md-#{$i} {
+      flex: 0 0 percentage($i / 12);
+      max-width: percentage($i / 12);
+    }
+  }
+  
+  @include respond-to(lg) {
+    .col-lg-#{$i} {
+      flex: 0 0 percentage($i / 12);
+      max-width: percentage($i / 12);
+    }
+  }
+}
+
+// Responsive utilities
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+.d-flex { display: flex !important; }
+
+@include respond-to(sm) {
+  .d-sm-none { display: none !important; }
+  .d-sm-block { display: block !important; }
+  .d-sm-flex { display: flex !important; }
+}
+
+@include respond-to(md) {
+  .d-md-none { display: none !important; }
+  .d-md-block { display: block !important; }
+  .d-md-flex { display: flex !important; }
+}
+
+@include respond-to(lg) {
+  .d-lg-none { display: none !important; }
+  .d-lg-block { display: block !important; }
+  .d-lg-flex { display: flex !important; }
+}
+
+// Spacing utilities
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $size, $length in (0: 0, 1: $space-1, 2: $space-2, 3: $space-3, 4: $space-4, 5: $space-5, 6: $space-6, 8: $space-8, 10: $space-10, 12: $space-12, 16: $space-16) {
+    .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+    .#{$abbrev}t-#{$size} { #{$prop}-top: $length !important; }
+    .#{$abbrev}r-#{$size} { #{$prop}-right: $length !important; }
+    .#{$abbrev}b-#{$size} { #{$prop}-bottom: $length !important; }
+    .#{$abbrev}l-#{$size} { #{$prop}-left: $length !important; }
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-left: $length !important;
+      #{$prop}-right: $length !important;
+    }
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-top: $length !important;
+      #{$prop}-bottom: $length !important;
+    }
+  }
+}
+
+// Text utilities
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+
+.text-xs { font-size: $text-xs !important; }
+.text-sm { font-size: $text-sm !important; }
+.text-base { font-size: $text-base !important; }
+.text-lg { font-size: $text-lg !important; }
+.text-xl { font-size: $text-xl !important; }
+.text-2xl { font-size: $text-2xl !important; }
+.text-3xl { font-size: $text-3xl !important; }
+.text-4xl { font-size: $text-4xl !important; }
+
 // Shader background support
 .content {
     position: relative;
@@ -95,7 +256,7 @@ a[class*="filter-tag-name-"]:hover {
 	box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-sm) {
 	#selected-tags-container > div {
 		flex-direction: column !important;
 		align-items: flex-start !important;
@@ -105,6 +266,26 @@ a[class*="filter-tag-name-"]:hover {
 	#selected-tags-container > div > div:first-child {
 		align-self: stretch;
 		justify-content: space-between;
+	}
+	
+	// Improve tag sizing on mobile
+	.tag-size-low,
+	.tag-size-mid,
+	.tag-size-high {
+		font-size: $text-sm !important;
+		padding: $space-2 $space-3 !important;
+		margin: $space-1;
+	}
+	
+	// Stack filter tags more neatly on mobile
+	.flex-container {
+		justify-content: flex-start;
+		
+		h4 {
+			width: 100%;
+			text-align: center;
+			margin-bottom: $space-4 !important;
+		}
 	}
 }
 
@@ -211,15 +392,32 @@ a[class*="filter-tag-name-"]:hover {
 }
 
 .general-container {
+	width: 100%;
 	max-width: $containerwidth;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 32px;
-	float: center;
+	margin-top: $space-8;
+	padding-left: $space-4;
+	padding-right: $space-4;
 	text-align: left;
 	position: relative;
 	min-height: 80vh;
 	z-index: 1;
+	
+	@include respond-to(xs) {
+		padding-left: $space-6;
+		padding-right: $space-6;
+	}
+	
+	@include respond-to(sm) {
+		margin-top: $space-10;
+		padding-left: $space-8;
+		padding-right: $space-8;
+	}
+	
+	@include respond-to(md) {
+		margin-top: $space-12;
+	}
 }
 
 
@@ -256,19 +454,35 @@ a:link:hover, a:visited:hover {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
+	gap: $space-2; // Reduced from $space-3 to match original spacing
+	
+	@include respond-to(sm) {
+		gap: $space-3; // Reduced from $space-4 to maintain tighter spacing
+	}
 }
 
 .tag-container {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: flex-end;
+	gap: $space-1; // Even smaller gap for tag containers
+	
+	@media (max-width: $breakpoint-sm) {
+		justify-content: center;
+	}
 }
 
 .tag-container2 {
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: flex-begin;
-	margin-left: 30px;
+	justify-content: flex-start;
+	margin-left: $space-8;
+	gap: $space-1; // Even smaller gap for tag containers
+	
+	@media (max-width: $breakpoint-sm) {
+		margin-left: 0;
+		justify-content: center;
+	}
 }
 
 .bgimg {
@@ -278,13 +492,215 @@ a:link:hover, a:visited:hover {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	overflow:hidden;
-	text-indent:100%;
-	white-space:nowrap;
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
 	background-clip: border-box;
+	border-radius: var(--border-radius);
+	transition: transform var(--transition-normal);
+	
+	@media (max-width: $breakpoint-sm) {
+		width: $gameblocksheight-sm;
+		height: $gameblocksheight-sm;
+	}
+	
+	@media (max-width: $breakpoint-xs) {
+		width: $gameblocksheight-xs;
+		height: $gameblocksheight-xs;
+	}
+	
+	&:hover {
+		transform: scale(1.05);
+	}
 }
 
-/* WINDOWS TASKBAR ******************************/
+/* MOBILE NAVIGATION SYSTEM ******************************/
+
+.mobile-menu-toggle {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 30px;
+	height: 30px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	z-index: 10;
+	
+	span {
+		width: 24px;
+		height: 3px;
+		background: linear-gradient(90deg, #ff0080, #00ff80);
+		border-radius: 2px;
+		transition: all 0.3s ease;
+		transform-origin: 1px;
+		box-shadow: 0 0 4px rgba(255, 0, 128, 0.6);
+		
+		&:first-child {
+			transform: rotate(0);
+		}
+		
+		&:nth-child(2) {
+			opacity: 1;
+			transform: translateX(0);
+		}
+		
+		&:nth-child(3) {
+			transform: rotate(0);
+		}
+	}
+	
+	&.active {
+		span {
+			&:first-child {
+				transform: rotate(45deg);
+			}
+			
+			&:nth-child(2) {
+				opacity: 0;
+				transform: translateX(20px);
+			}
+			
+			&:nth-child(3) {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}
+
+.mobile-menu-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: $z-modal;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: all var(--transition-normal);
+	backdrop-filter: blur(5px);
+	
+	&.active {
+		opacity: 1;
+		visibility: visible;
+		
+		.mobile-menu-content {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+}
+
+.mobile-menu-content {
+	background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #dc143c 100%);
+	border: 4px outset #ff69b4;
+	border-radius: 16px;
+	padding: $space-6;
+	max-width: 90vw;
+	max-height: 80vh;
+	overflow-y: auto;
+	transform: scale(0.8);
+	opacity: 0;
+	transition: all var(--transition-normal);
+	box-shadow: 0 20px 60px rgba(255, 20, 147, 0.6),
+	            0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.mobile-menu-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: $space-6;
+	padding-bottom: $space-3;
+	border-bottom: 3px ridge #ff1493;
+	
+	h3 {
+		margin: 0;
+		color: #ffffff;
+		font-family: $title-font;
+		font-size: $text-2xl;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+	}
+}
+
+.mobile-menu-close {
+	background: linear-gradient(45deg, #ff0000, #ff8000);
+	border: 3px outset #ff4000;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	color: #ffffff;
+	font-size: $text-2xl;
+	font-weight: bold;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+	transition: all var(--transition-fast);
+	
+	&:hover {
+		transform: scale(1.1) rotate(90deg);
+		background: linear-gradient(45deg, #ff4000, #ffa000);
+		box-shadow: 0 0 12px rgba(255, 64, 0, 0.8);
+	}
+	
+	&:active {
+		border: 3px inset #ff4000;
+		transform: scale(0.95) rotate(90deg);
+	}
+}
+
+.mobile-menu-items {
+	display: flex;
+	flex-direction: column;
+	gap: $space-3;
+}
+
+.mobile-menu-item {
+	display: flex;
+	align-items: center;
+	gap: $space-4;
+	padding: $space-4;
+	background: linear-gradient(135deg, #00ff80 0%, #0080ff 50%, #8000ff 100%);
+	border: 3px outset #00ff80;
+	border-radius: 12px;
+	color: #000000;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: $text-lg;
+	transition: all var(--transition-fast);
+	text-shadow: 1px 1px 2px #ffffff;
+	
+	&:hover {
+		background: linear-gradient(135deg, #40ffa0 0%, #4090ff 50%, #a040ff 100%);
+		transform: translateX(10px) scale(1.02);
+		box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4),
+		            inset 2px 2px 4px rgba(255, 255, 255, 0.6);
+	}
+	
+	&:active {
+		border: 3px inset #00ff80;
+		transform: translateX(5px) scale(0.98);
+	}
+	
+	.menu-icon {
+		font-size: $text-2xl;
+		min-width: 30px;
+		text-align: center;
+		filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+	}
+	
+	.menu-label {
+		font-family: $text-font;
+		font-weight: bold;
+	}
+}
 
 .windows-taskbar {
 	position: fixed;
@@ -540,7 +956,78 @@ a:link:hover, a:visited:hover {
 }
 
 /* Responsive taskbar */
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-sm) {
+	.windows-taskbar {
+		height: 40px;
+		font-size: 11px;
+		padding: 0 $space-2;
+	}
+
+	.taskbar-start {
+		padding: 0 $space-2;
+	}
+
+	.start-button {
+		min-width: 60px;
+		height: 28px;
+		font-size: 11px;
+		padding: $space-1 $space-2;
+		
+		.start-icon-circle {
+			width: 18px;
+			height: 18px;
+		}
+		
+		.start-text {
+			font-size: 10px;
+		}
+	}
+
+	.taskbar-middle {
+		padding: 0 $space-1;
+	}
+
+	.taskbar-item {
+		height: 28px;
+		max-width: 140px;
+		font-size: 10px;
+		padding: $space-1 $space-2;
+		
+		.taskbar-label {
+			max-width: 90px;
+		}
+		
+		.taskbar-icon {
+			font-size: 12px;
+		}
+	}
+
+	.taskbar-end {
+		padding: 0 $space-2;
+	}
+
+	.system-tray {
+		height: 28px;
+		font-size: 9px;
+		gap: $space-1;
+		padding: $space-1 $space-2;
+		
+		.clock {
+			font-size: 9px;
+			min-width: 45px;
+		}
+		
+		.tray-icon {
+			font-size: 11px;
+		}
+	}
+
+	.content {
+		padding-bottom: 50px;
+	}
+}
+
+@media (max-width: $breakpoint-xs) {
 	.windows-taskbar {
 		height: 35px;
 		font-size: 10px;
@@ -606,5 +1093,110 @@ a:link:hover, a:visited:hover {
 .btn:active { transform: translateY(0); box-shadow: 0 2px 0 rgba(0,0,0,0.25); }
 .btn-ghost { background: transparent; color:#000; border:2px dashed #000; }
 .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+
+/* Additional responsive utilities */
+.w-100 { width: 100% !important; }
+.h-100 { height: 100% !important; }
+
+/* Flexbox utilities */
+.justify-content-start { justify-content: flex-start !important; }
+.justify-content-end { justify-content: flex-end !important; }
+.justify-content-center { justify-content: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.justify-content-around { justify-content: space-around !important; }
+
+.align-items-start { align-items: flex-start !important; }
+.align-items-end { align-items: flex-end !important; }
+.align-items-center { align-items: center !important; }
+.align-items-baseline { align-items: baseline !important; }
+.align-items-stretch { align-items: stretch !important; }
+
+.flex-wrap { flex-wrap: wrap !important; }
+.flex-nowrap { flex-wrap: nowrap !important; }
+
+/* Focus styles for accessibility */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 3px solid $retro-cyan;
+	outline-offset: 2px;
+}
+
+/* Improved typography for readability */
+p, ul, ol, dl {
+	line-height: 1.6;
+	margin-bottom: $space-4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.3;
+	margin-bottom: $space-3;
+	font-family: $title-font;
+}
+
+h1 { font-size: $text-4xl; }
+h2 { font-size: $text-3xl; }
+h3 { font-size: $text-2xl; }
+h4 { font-size: $text-xl; }
+h5 { font-size: $text-lg; }
+h6 { font-size: $text-base; }
+
+@media (max-width: $breakpoint-sm) {
+	h1 { font-size: $text-3xl; }
+	h2 { font-size: $text-2xl; }
+	h3 { font-size: $text-xl; }
+	h4 { font-size: $text-lg; }
+}
+
+/* Card component for consistent styling */
+.card {
+	background: var(--retro-bg);
+	border: 3px outset $retro-border;
+	border-radius: var(--border-radius);
+	box-shadow: 4px 4px 0px $retro-shadow;
+	overflow: hidden;
+	transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+	
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: 6px 6px 0px $retro-shadow;
+	}
+}
+
+.card-header {
+	padding: $space-4;
+	background: linear-gradient(135deg, $retro-bg-alt 0%, $retro-bg 100%);
+	border-bottom: 2px groove $retro-border;
+}
+
+.card-body {
+	padding: $space-4;
+}
+
+.card-footer {
+	padding: $space-4;
+	background: linear-gradient(135deg, $retro-bg 0%, $retro-bg-alt 100%);
+	border-top: 2px groove $retro-border;
+}
+
+/* Print styles */
+@media print {
+	.windows-taskbar,
+	.taskbar-trigger,
+	.mobile-menu-overlay {
+		display: none !important;
+	}
+	
+	.content {
+		padding-bottom: 0 !important;
+	}
+	
+	body {
+		background: white !important;
+		color: black !important;
+	}
+}
 
 
