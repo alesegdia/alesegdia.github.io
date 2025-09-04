@@ -4,8 +4,7 @@ permalink: /
 title: games
 ---
 
-<div class="container">
-  <div class="general-container">
+<div class="general-container">
 
 {% assign games = site.games | sort: "order" %}
 {% assign all_tags = "" | split: "" %}
@@ -32,72 +31,71 @@ title: games
 
 <!-- Filters Container -->
 <div class="filters-container">
-  <div class="row">
-    <div class="col-12">
-      <div class="flex-container mb-4">
-        {% for tag_data in tag_frequency %}
-          {% assign tag_parts = tag_data | split: ":" %}
-          {% assign tag = tag_parts[0] %}
-          {% assign count = tag_parts[1] | plus: 0 %}
-          {% assign size_class = "tag-size-low" %}
-          {% if count >= 4 %}
-            {% assign size_class = "tag-size-high" %}
-          {% elsif count >= 2 and count <= 3 %}
-            {% assign size_class = "tag-size-mid" %}
-          {% endif %}
-        <a class="filter-tag-name-{{ tag | downcase | replace: ' ', '-' | replace: '/', '' }} {{ size_class }}">{{ tag }}</a>
-        {% endfor %}
-      </div>
-    </div>
+  <div class="flex-container">
+    <h4 style="margin: 0 0 0.75rem 0; color: #333; font-size: 1.1rem; font-weight: bold;">Filter by Tags:</h4>
+    
+    {% for tag_data in tag_frequency %}
+      {% assign tag_parts = tag_data | split: ":" %}
+      {% assign tag = tag_parts[0] %}
+      {% assign count = tag_parts[1] | plus: 0 %}
+      {% assign size_class = "tag-size-low" %}
+      {% if count >= 4 %}
+        {% assign size_class = "tag-size-high" %}
+      {% elsif count >= 2 and count <= 3 %}
+        {% assign size_class = "tag-size-mid" %}
+      {% endif %}
+    <a class="filter-tag-name-{{ tag | downcase | replace: ' ', '-' | replace: '/', '' }} {{ size_class }}">{{ tag }}</a>&nbsp;
+    {% endfor %}
   </div>
 
   <!-- Game Type Filter Section -->
-  <div class="row mt-4 pt-4" style="border-top: 2px solid #ddd;">
-    <div class="col-12">
-      {% assign game_types = "" | split: "" %}
+  <div class="flex-container" style="margin-top: 1.5rem; border-top: 2px solid #ddd; padding-top: 1rem;">
+    <h4 style="margin: 0 0 0.75rem 0; color: #333; font-size: 1.1rem; font-weight: bold;">Filter by Type:</h4>
+    
+    {% assign game_types = "" | split: "" %}
+    {% for game in games %}
+      {% if game.type %}
+        {% assign game_types = game_types | push: game.type %}
+      {% endif %}
+    {% endfor %}
+    {% assign game_types = game_types | uniq | sort %}
+    
+    {% for type in game_types %}
+      {% assign count = 0 %}
       {% for game in games %}
-        {% if game.type %}
-          {% assign game_types = game_types | push: game.type %}
+        {% if game.type == type %}
+          {% assign count = count | plus: 1 %}
         {% endif %}
       {% endfor %}
-      {% assign game_types = game_types | uniq | sort %}
       
-      <div class="flex-container">
-        {% for type in game_types %}
-          {% assign count = 0 %}
-          {% for game in games %}
-            {% if game.type == type %}
-              {% assign count = count | plus: 1 %}
-            {% endif %}
-          {% endfor %}
-          
-          {% if type == 'jam' %}
-            <a class="filter-type-{{ type }} type-filter tag-orange">Game Jam ({{ count }})</a>
-          {% elsif type == 'prototype' %}
-            <a class="filter-type-{{ type }} type-filter tag-blue">Prototype ({{ count }})</a>
-          {% elsif type == 'complete' %}
-            <a class="filter-type-{{ type }} type-filter tag-green">Complete ({{ count }})</a>
-          {% else %}
-            <a class="filter-type-{{ type }} type-filter tag-gray">{{ type | capitalize }} ({{ count }})</a>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
+      {% if type == 'jam' %}
+        <a class="filter-type-{{ type }} type-filter tag-orange">Game Jam ({{ count }})</a>&nbsp;
+      {% elsif type == 'prototype' %}
+        <a class="filter-type-{{ type }} type-filter tag-blue">Prototype ({{ count }})</a>&nbsp;
+      {% elsif type == 'complete' %}
+        <a class="filter-type-{{ type }} type-filter tag-green">Complete ({{ count }})</a>&nbsp;
+      {% else %}
+        <a class="filter-type-{{ type }} type-filter tag-gray">{{ type | capitalize }} ({{ count }})</a>&nbsp;
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 
 <!-- Selected Tags Section -->
-<div id="selected-tags-section" class="my-8">
-  <div id="selected-tags-container" class="p-4 d-none" style="background: #e7f3ff; border-radius: var(--border-radius); border: 2px solid #007bff;">
-    <div class="d-flex align-items-center flex-wrap" style="gap: 1rem;">
-      <div class="d-flex align-items-center" style="gap: 0.5rem;">
-        <button id="clear-filters" class="btn btn-sm" style="padding: 0.3rem 0.6rem; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 500; transition: background-color 0.2s ease; display: flex; align-items: center; gap: 0.3rem;" title="Clear all filters">✕</button>
+<div id="selected-tags-section" style="margin: 2rem 0;">
+  <div id="selected-tags-container" style="padding: 1rem; background: #e7f3ff; border-radius: 8px; border: 2px solid #007bff; display: none;">
+    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <button id="clear-filters" style="padding: 0.3rem 0.6rem; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 500; transition: background-color 0.2s ease; display: flex; align-items: center; gap: 0.3rem;" title="Clear all filters">✕</button>
         <strong style="color: #0056b3;">Active Filters:</strong>
       </div>
-      <div id="selected-tags-list" class="d-flex flex-wrap" style="gap: 0.2rem;"></div>
+      <div id="selected-tags-list" style="display: flex; flex-wrap: wrap; gap: 0.2rem;"></div>
     </div>
   </div>
+
+  
 </div>
+
 
 <div class="game-grid">
 {% for game in games reversed %}
