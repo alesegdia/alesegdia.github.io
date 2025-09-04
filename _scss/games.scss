@@ -2,11 +2,11 @@
 
 .filters-container {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border: 3px outset #c0c0c0;
+  border: 10px outset #0057ff;
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.15);
   
   h4 {
     color: #495057;
@@ -31,9 +31,9 @@
 
 .game-card {
   background: #f0f0f0;
-  border-radius: 0;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
-  border: 3px outset #c0c0c0;
+  border-radius: 8px;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.15);
+  border: 10px outset #c0c0c0;
   overflow: hidden;
   margin-bottom: 1rem;
   
@@ -128,6 +128,39 @@
   &.game-type-unknown .game-header {
     background: linear-gradient(135deg, rgba(158, 158, 158, 0.3) 0%, rgba(158, 158, 158, 0.1) 100%);
     border-bottom: 3px groove rgba(158, 158, 158, 0.5);
+  }
+
+  // Game card border colors based on game type
+  &.game-type-jam {
+    border-color: #ff9800;
+    
+    .game-header h3 {
+      color: #bf360c;
+    }
+  }
+  
+  &.game-type-prototype {
+    border-color: #2196f3;
+    
+    .game-header h3 {
+      color: #01579b;
+    }
+  }
+  
+  &.game-type-complete {
+    border-color: #4caf50;
+    
+    .game-header h3 {
+      color: #0d5016;
+    }
+  }
+  
+  &.game-type-unknown {
+    border-color: #9e9e9e;
+    
+    .game-header h3 {
+      color: #212121;
+    }
   }
 }
 

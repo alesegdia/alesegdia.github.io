@@ -87,9 +87,12 @@ a[class*="filter-tag-name-"]:hover {
 }
 
 #selected-tags-section {
-	border-top: 3px ridge #808080;
-	padding-top: 1rem;
 	background-color: rgba(255, 255, 255, 0.3);
+}
+
+#selected-tags-container {
+	border: 3px outset #c0c0c0;
+	box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 768px) {
@@ -288,107 +291,180 @@ a:link:hover, a:visited:hover {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	height: 40px;
-	background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%);
-	border-top: 2px outset #c0c0c0;
+	height: 50px;
+	background: linear-gradient(180deg, #ff69b4 0%, #ff1493 50%, #dc143c 100%);
+	border-top: 8px outset #ff69b4;
+	border-image: linear-gradient(90deg, #ff0080, #00ff80, #0080ff, #ff8000, #8000ff) 1;
 	display: flex;
 	align-items: center;
 	z-index: 1000;
-	font-family: 'MS Sans Serif', sans-serif;
-	font-size: 11px;
-	box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.3);
+	font-family: 'Comic Sans MS', cursive;
+	font-size: 14px;
+	font-weight: bold;
+	box-shadow: 0 -4px 12px rgba(255, 20, 147, 0.6), 
+	            0 -8px 24px rgba(255, 105, 180, 0.4),
+	            inset 0 2px 0 rgba(255, 255, 255, 0.3);
+	animation: taskbar-glow 3s ease-in-out infinite alternate;
+	
+	/* Auto-hide functionality */
+	transform: translateY(calc(100% - 8px));
+	transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	
+	&:hover,
+	&.taskbar-show {
+		transform: translateY(0);
+	}
+}
+
+/* Taskbar trigger area - invisible div to detect mouse near bottom */
+.taskbar-trigger {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 20px;
+	z-index: 999;
+	pointer-events: auto;
+}
+
+@keyframes taskbar-glow {
+	0% { box-shadow: 0 -4px 12px rgba(255, 20, 147, 0.6), 0 -8px 24px rgba(255, 105, 180, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.3); }
+	100% { box-shadow: 0 -6px 16px rgba(255, 20, 147, 0.8), 0 -12px 32px rgba(255, 105, 180, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.5); }
 }
 
 .taskbar-start {
-	padding: 0 8px;
+	padding: 0 12px;
 }
 
 .start-button {
-	background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%);
-	border: 2px outset #c0c0c0;
-	border-radius: 0;
-	padding: 4px 8px;
+	background: linear-gradient(45deg, #ffff00 0%, #ff8000 25%, #ff0080 50%, #8000ff 75%, #00ff80 100%);
+	border: 4px outset #ffff00;
+	border-radius: 12px;
+	padding: 8px 16px;
 	display: flex;
 	align-items: center;
-	gap: 4px;
+	gap: 8px;
 	cursor: pointer;
-	font-family: inherit;
-	font-size: 11px;
+	font-family: 'Comic Sans MS', cursive;
+	font-size: 16px;
 	font-weight: bold;
 	color: #000000;
-	text-shadow: 1px 1px 0px #ffffff;
-	min-width: 60px;
-	height: 30px;
+	text-shadow: 2px 2px 0px #ffffff, -1px -1px 0px #ffffff, 1px -1px 0px #ffffff, -1px 1px 0px #ffffff;
+	min-width: 80px;
+	height: 36px;
+	transform: rotate(-1deg);
+	box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), 
+	            inset 2px 2px 4px rgba(255, 255, 255, 0.6);
+	animation: start-wiggle 4s ease-in-out infinite;
 
 	&:hover {
-		background: linear-gradient(180deg, #d0d0d0 0%, #909090 100%);
+		background: linear-gradient(45deg, #ffff80 0%, #ffb040 25%, #ff40a0 50%, #a040ff 75%, #40ffa0 100%);
+		transform: rotate(1deg) scale(1.05);
+		animation-duration: 1s;
 	}
 
 	&:active {
-		border: 2px inset #c0c0c0;
-		background: linear-gradient(180deg, #a0a0a0 0%, #707070 100%);
+		border: 4px inset #ffff00;
+		background: linear-gradient(45deg, #e0e000 0%, #e07000 25%, #e00070 50%, #7000e0 75%, #00e070 100%);
+		transform: rotate(-0.5deg) scale(0.98);
 	}
 
 	.start-icon-circle {
-		width: 18px;
-		height: 18px;
+		width: 24px;
+		height: 24px;
 		border-radius: 50%;
+		background: radial-gradient(circle, #ffffff 0%, #00ff80 50%, #0080ff 100%);
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
-		border: 1px solid #808080;
-		box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+		border: 2px solid #000000;
+		box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3), 
+		            0 0 8px rgba(0, 255, 128, 0.6);
+		animation: icon-spin 8s linear infinite;
 	}
 
 	.start-text {
 		font-weight: bold;
+		background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: text-rainbow 2s linear infinite;
 	}
+}
+
+@keyframes start-wiggle {
+	0%, 100% { transform: rotate(-1deg); }
+	25% { transform: rotate(0deg); }
+	50% { transform: rotate(1deg); }
+	75% { transform: rotate(-0.5deg); }
+}
+
+@keyframes icon-spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@keyframes text-rainbow {
+	0% { background-position: 0% 50%; }
+	100% { background-position: 100% 50%; }
 }
 
 .taskbar-middle {
 	flex: 1;
-	padding: 0 8px;
+	padding: 0 12px;
 	display: flex;
 	align-items: center;
 }
 
 .taskbar-items {
 	display: flex;
-	gap: 2px;
+	gap: 6px;
 }
 
 .taskbar-item {
-	background: linear-gradient(180deg, #e0e0e0 0%, #a0a0a0 100%);
-	border: 2px outset #c0c0c0;
-	border-radius: 0;
-	padding: 4px 8px;
+	background: linear-gradient(135deg, #00ff80 0%, #0080ff 50%, #8000ff 100%);
+	border: 3px outset #00ff80;
+	border-radius: 8px;
+	padding: 6px 12px;
 	display: flex;
 	align-items: center;
-	gap: 4px;
+	gap: 6px;
 	cursor: pointer;
-	font-size: 11px;
+	font-size: 13px;
+	font-weight: bold;
 	color: #000000;
-	text-shadow: 1px 1px 0px #ffffff;
-	max-width: 200px;
-	height: 30px;
-	transition: all 0.1s ease;
+	text-shadow: 2px 2px 0px #ffffff, -1px -1px 0px #ffffff, 1px -1px 0px #ffffff, -1px 1px 0px #ffffff;
+	max-width: 220px;
+	height: 36px;
+	transition: all 0.2s ease;
+	transform: rotate(0.5deg);
+	box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 
+	            inset 1px 1px 2px rgba(255, 255, 255, 0.6);
 
 	&.active {
-		border: 2px inset #c0c0c0;
-		background: linear-gradient(180deg, #a0a0a0 0%, #707070 100%);
+		border: 3px inset #00ff80;
+		background: linear-gradient(135deg, #00e070 0%, #0070e0 50%, #7000e0 100%);
+		transform: rotate(-0.5deg) scale(0.96);
+		box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.4);
 	}
 
 	&:hover:not(.active) {
-		background: linear-gradient(180deg, #f0f0f0 0%, #b0b0b0 100%);
+		background: linear-gradient(135deg, #40ffa0 0%, #4090ff 50%, #a040ff 100%);
+		transform: rotate(-0.5deg) scale(1.03);
+		box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), 
+		            inset 1px 1px 2px rgba(255, 255, 255, 0.8);
 	}
 
 	&:active {
-		border: 2px inset #c0c0c0;
-		background: linear-gradient(180deg, #909090 0%, #606060 100%);
+		border: 3px inset #00ff80;
+		background: linear-gradient(135deg, #00c060 0%, #0060c0 50%, #6000c0 100%);
+		transform: rotate(0deg) scale(0.94);
 	}
 
 	.taskbar-icon {
-		font-size: 12px;
+		font-size: 16px;
+		filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
 	}
 
 	.taskbar-label {
@@ -396,31 +472,41 @@ a:link:hover, a:visited:hover {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
 	}
 }
 
 .taskbar-end {
-	padding: 0 8px;
+	padding: 0 12px;
 }
 
 .system-tray {
 	display: flex;
 	align-items: center;
-	gap: 6px;
-	padding: 4px 8px;
-	background: linear-gradient(180deg, #e0e0e0 0%, #c0c0c0 100%);
-	border: 1px inset #c0c0c0;
-	border-radius: 0;
-	height: 30px;
+	gap: 8px;
+	padding: 6px 12px;
+	background: linear-gradient(135deg, #ff8000 0%, #ffff00 50%, #80ff00 100%);
+	border: 3px outset #ff8000;
+	border-radius: 12px;
+	height: 36px;
+	transform: rotate(-0.5deg);
+	box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 
+	            inset 1px 1px 2px rgba(255, 255, 255, 0.6);
+	animation: tray-pulse 5s ease-in-out infinite;
 
 	.tray-icon {
-		font-size: 12px;
+		font-size: 16px;
 		color: #000000;
 		cursor: pointer;
 		padding: 2px;
+		text-shadow: 1px 1px 0px #ffffff, -1px -1px 0px #ffffff, 1px -1px 0px #ffffff, -1px 1px 0px #ffffff;
+		transition: all 0.2s ease;
 
 		&:hover {
-			background: rgba(255, 255, 255, 0.3);
+			background: rgba(255, 255, 255, 0.4);
+			border-radius: 4px;
+			transform: scale(1.2) rotate(10deg);
+			text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 		}
 	}
 
@@ -431,12 +517,21 @@ a:link:hover, a:visited:hover {
 		justify-content: center;
 		color: #000000;
 		font-weight: bold;
-		text-shadow: 1px 1px 0px #ffffff;
-		font-size: 9px;
+		text-shadow: 2px 2px 0px #ffffff, -1px -1px 0px #ffffff, 1px -1px 0px #ffffff, -1px 1px 0px #ffffff;
+		font-size: 12px;
 		line-height: 1.1;
-		min-width: 50px;
+		min-width: 60px;
 		text-align: center;
+		padding: 2px 4px;
+		background: rgba(255, 255, 255, 0.3);
+		border-radius: 6px;
+		border: 1px solid rgba(0, 0, 0, 0.2);
 	}
+}
+
+@keyframes tray-pulse {
+	0%, 100% { transform: rotate(-0.5deg) scale(1); }
+	50% { transform: rotate(0.5deg) scale(1.02); }
 }
 
 /* Ensure content doesn't get hidden behind taskbar */

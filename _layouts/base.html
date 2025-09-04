@@ -50,6 +50,53 @@
 			</div>
 		</div>
 
+		<!-- Taskbar trigger area for mouse detection -->
+		<div class="taskbar-trigger" id="taskbar-trigger"></div>
+
+		<script>
+			// Taskbar auto-hide functionality
+			(function() {
+				const taskbar = document.querySelector('.windows-taskbar');
+				const trigger = document.getElementById('taskbar-trigger');
+				let hideTimeout;
+				
+				function showTaskbar() {
+					clearTimeout(hideTimeout);
+					taskbar.classList.add('taskbar-show');
+				}
+				
+				function hideTaskbar() {
+					hideTimeout = setTimeout(() => {
+						taskbar.classList.remove('taskbar-show');
+					}, 500); // Wait 500ms before hiding
+				}
+				
+				// Show taskbar when mouse enters bottom area
+				trigger.addEventListener('mouseenter', showTaskbar);
+				taskbar.addEventListener('mouseenter', showTaskbar);
+				
+				// Hide taskbar when mouse leaves both areas
+				trigger.addEventListener('mouseleave', hideTaskbar);
+				taskbar.addEventListener('mouseleave', hideTaskbar);
+				
+				// Clock functionality
+				function updateClock() {
+					const now = new Date();
+					const timeElement = document.getElementById('taskbar-time');
+					const dateElement = document.getElementById('taskbar-date');
+					
+					if (timeElement && dateElement) {
+						timeElement.textContent = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+						dateElement.textContent = now.toLocaleDateString([], {month: 'short', day: 'numeric'});
+					}
+				}
+				
+				// Update clock immediately and then every second
+				updateClock();
+				setInterval(updateClock, 1000);
+			})();
+		</script>
+
 	</body>
 
 </html>

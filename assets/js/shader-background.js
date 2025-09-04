@@ -34,7 +34,6 @@ class ShaderBackground {
             
             // Add a subtle label in corner
             const label = document.createElement('div');
-            label.textContent = 'WebGL Background';
             label.style.position = 'fixed';
             label.style.bottom = '20px';
             label.style.right = '20px';
