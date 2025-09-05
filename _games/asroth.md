@@ -8,10 +8,11 @@ order: 35
 link_github: https://github.com/alesegdia/gbjam-asroth
 link_gamejolt: https://gamejolt.com/games/asroth/86768
 link_itchio: https://alesegdia.itch.io/asroth
+start-date: 8/2015
 ---
 
 Asroth is the result of a week of work in a procedurally
-generated shooter platformer highly based in SNES jewel Demon's Crest,
+generated shooter platformer highly based in **SNES** jewel **Demon's Crest**,
 with all respects. The game features a nice variety of shoot types that you
 can buy as well as other upgrades that enhance your flying abilities. The code for the generator
 called **platgen** can be found in a separated repository.

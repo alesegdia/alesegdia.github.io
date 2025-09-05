@@ -8,6 +8,7 @@ link_itchio: https://alesegdia.itch.io/dash-maker
 link_github: https://github.com/alesegdia/famjam7
 type: jam
 order: -1
+start-date: 10/2016
 ---
 
 Game where you have to go all the way through a plain track by pressing two keys without crashing in the

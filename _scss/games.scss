@@ -299,16 +299,16 @@
       
       a {
         display: inline-block;
-        margin-right: 0.75rem;
-        margin-bottom: 0.5rem;
+        margin-right: 0.4rem;
+        margin-bottom: 0.3rem;
         text-decoration: none;
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
-        border-radius: 0;
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 12px;  // Made rounded
         background: #c0c0c0;
         color: #000000;  // Changed to black
         border: 2px outset #c0c0c0;
-        transition: none;
+        transition: all 0.2s ease;  // Added smooth transition
         font-weight: bold;
         text-shadow: 1px 1px 0px #ffffff;
         
@@ -316,6 +316,7 @@
           background: #e0e0e0;
           border: 2px inset #c0c0c0;
           text-decoration: underline;
+          transform: translateY(1px);  // Added slight press effect
         }
         
         &.primary-link {
@@ -330,30 +331,174 @@
             text-decoration: underline;
           }
         }
+        
+        // Platform-specific colors based on title attributes
+        &[title*="GitHub"], &[title*="Source Code"] {
+          background: #0969da;  // GitHub blue
+          color: white;
+          border-color: #0969da;
+          text-shadow: none;
+          
+          &:hover {
+            background: #0550ae;
+            border-color: #0550ae;
+          }
+        }
+        
+        &[title*="Itch.io"] {
+          background: #fa5c5c;  // Itch.io red
+          color: white;
+          border-color: #fa5c5c;
+          text-shadow: none;
+          
+          &:hover {
+            background: #e74c3c;
+            border-color: #e74c3c;
+          }
+        }
+        
+        &[title*="GameJolt"] {
+          background: #2f7d32;  // GameJolt green
+          color: white;
+          border-color: #2f7d32;
+          text-shadow: none;
+          
+          &:hover {
+            background: #1b5e20;
+            border-color: #1b5e20;
+          }
+        }
+        
+        &[title*="Ludum Dare"] {
+          background: #ff6f00;  // Ludum Dare orange
+          color: white;
+          border-color: #ff6f00;
+          text-shadow: none;
+          
+          &:hover {
+            background: #e65100;
+            border-color: #e65100;
+          }
+        }
+        
+        &[title*="YouTube"], &[title*="Video"] {
+          background: #ff0000;  // YouTube red
+          color: white;
+          border-color: #ff0000;
+          text-shadow: none;
+          
+          &:hover {
+            background: #cc0000;
+            border-color: #cc0000;
+          }
+        }
+        
+        &[title*="Windows"] {
+          background: #0078d4;  // Windows blue
+          color: white;
+          border-color: #0078d4;
+          text-shadow: none;
+          
+          &:hover {
+            background: #106ebe;
+            border-color: #106ebe;
+          }
+        }
+        
+        &[title*="Linux"] {
+          background: #fcc624;  // Linux yellow
+          color: black;
+          border-color: #fcc624;
+          text-shadow: none;
+          
+          &:hover {
+            background: #f9b233;
+            border-color: #f9b233;
+          }
+        }
+        
+        &[title*="Mac"] {
+          background: #007aff;  // Mac blue (iOS/macOS blue)
+          color: white;
+          border-color: #007aff;
+          text-shadow: none;
+          
+          &:hover {
+            background: #0056cc;
+            border-color: #0056cc;
+          }
+        }
+        
+        &[title*="Android"] {
+          background: #3ddc84;  // Android green
+          color: black;
+          border-color: #3ddc84;
+          text-shadow: none;
+          
+          &:hover {
+            background: #00c853;
+            border-color: #00c853;
+          }
+        }
+        
+        &[title*="Play Online"] {
+          background: #9c27b0;  // Purple for online games
+          color: white;
+          border-color: #9c27b0;
+          text-shadow: none;
+          
+          &:hover {
+            background: #7b1fa2;
+            border-color: #7b1fa2;
+          }
+        }
+        
+        &[title*="Game Page"], &[title*="View Game Page"] {
+          background: #2196f3;  // Blue for game page links
+          color: white;
+          border-color: #2196f3;
+          text-shadow: none;
+          
+          &:hover {
+            background: #1976d2;
+            border-color: #1976d2;
+          }
+        }
       }
     }
     
     .game-tags {
+      margin-top: 2rem;
       margin-bottom: 1rem;
       
       .tag {
         display: inline-block;
-        padding: 0.3rem 0.8rem;
-        margin: 0.2rem 0.4rem 0.2rem 0;
-        background: #e1f5fe;
-        color: #01579b;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        font-weight: 500;
+        padding: 4px 10px;
+        margin: 0.3rem 0.5rem 0.3rem 0;
+        background: #c0c0c0;
+        color: #000080;
+        border: 2px outset #c0c0c0;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        font-weight: bold;
         text-transform: lowercase;
-        font-family: 'Helvetica', sans-serif;
+        font-family: 'Comic Sans MS', cursive;
+        text-shadow: 1px 1px 0px #ffffff;
+        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15);
+        
+        &:hover {
+          background: #e0e0e0;
+          border: 2px inset #c0c0c0;
+          transform: translateY(1px);
+          box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15);
+        }
       }
     }
     
     .game-description {
       color: #000000;  // Changed to black
       line-height: 1.6;
-      font-size: 0.95rem;
+      font-size: 1.3rem;
       
       p {
         margin: 0 0 1rem 0;
